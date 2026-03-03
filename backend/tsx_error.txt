@@ -1,0 +1,51 @@
+[Auth] Secret loaded: true, Prefix: D0S01...
+npx : C:\Users\HP\Deskt
+op\vessify-intern-assig
+nment\backend\tests\aut
+h.test.ts:59
+At line:1 char:1
++ npx tsx 
+tests/auth.test.ts 
+2>&1 | Out-File 
+-FilePath 
+tsx_error.txt -E ...
++ ~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~
+    + CategoryInfo     
+         : NotSpecifi  
+  ed: (C:\Users\HP\D   
+ es...auth.test.ts:    
+59:String) [], Rem    
+oteException
+    + FullyQualifiedEr 
+   rorId : NativeComm  
+  andError
+ 
+describe("Auth flows", 
+() => {
+^
+
+
+ReferenceError: 
+describe is not defined
+    at <anonymous> (C:\
+Users\HP\Desktop\vessif
+y-intern-assignment\bac
+kend\tests\auth.test.ts
+:59:1)
+    at ModuleJob.run (n
+ode:internal/modules/es
+m/module_job:222:25)
+    at async 
+ModuleLoader.import (no
+de:internal/modules/esm
+/loader:323:24)
+    at async loadESM (n
+ode:internal/process/es
+m_loader:28:7)
+    at async 
+handleMainPromise (node
+:internal/modules/run_m
+ain:113:12)
+
+Node.js v20.12.2

@@ -1,0 +1,109 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String               @id
+  email         String               @unique
+  emailVerified Boolean              @default(false)
+  name          String?
+  image         String?
+  createdAt     DateTime             @default(now())
+  updatedAt     DateTime             @updatedAt
+  password      String?
+  accounts      Account[]
+  memberships   OrganizationMember[]
+  sessions      Session[]
+  transactions  Transaction[]
+
+  @@index([email])
+  @@map("users")
+}
+
+model Session {
+  id        String   @id
+  userId    String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  token     String   @unique
+  updatedAt DateTime @updatedAt
+  ipAddress String?
+  userAgent String?
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([token])
+  @@index([userId])
+  @@map("sessions")
+}
+
+model Account {
+  id           String    @id
+  userId       String
+  accessToken  String?
+  accountId    String
+  createdAt    DateTime  @default(now())
+  expiresAt    DateTime?
+  idToken      String?
+  password     String?
+  providerId   String
+  refreshToken String?
+  updatedAt    DateTime  @updatedAt
+  user         User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([providerId, accountId])
+  @@index([userId])
+  @@map("accounts")
+}
+
+model Organization {
+  id           String               @id
+  name         String
+  createdAt    DateTime             @default(now())
+  slug         String?              @unique
+  updatedAt    DateTime             @updatedAt
+  members      OrganizationMember[]
+  transactions Transaction[]
+
+  @@index([slug])
+  @@map("organizations")
+}
+
+model OrganizationMember {
+  id             String       @id
+  userId         String
+  organizationId String
+  role           String       @default("member")
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  user           User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, organizationId])
+  @@index([organizationId])
+  @@index([userId])
+  @@map("organization_members")
+}
+
+model Transaction {
+  id             String       @id @default(cuid())
+  userId         String
+  organizationId String
+  date           DateTime
+  description    String
+  amount         Decimal      @db.Decimal(10, 2)
+  balance        Decimal      @db.Decimal(10, 2)
+  rawText        String?
+  createdAt      DateTime     @default(now())
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  user           User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, organizationId, createdAt(sort: Desc)])
+  @@map("transactions")
+}
+
+

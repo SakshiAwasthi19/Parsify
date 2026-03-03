@@ -1,0 +1,475 @@
+node : ts-jest[ts-jest-
+transformer] (WARN) 
+Define `ts-jest` 
+config under `globals` 
+is deprecated. Please 
+do
+At line:1 char:1
++ node --experimental-v
+m-modules ../node_modul
+es/jest/bin/jest.js 
+tests ...
++ ~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~
+    + CategoryInfo     
+         : 
+NotSpecified: (ts-    
+jest[ts-jest...ated. P 
+   lease do:String) 
+[], R    emoteException
+    + 
+FullyQualifiedErrorI   
+ d : NativeCommandError
+ 
+transform: {
+    <transform_regex>: 
+['ts-jest', { /* 
+ts-jest config goes 
+here in Jest */ }],
+},
+FAIL 
+tests/parser.test.ts
+  ??? Test suite 
+failed to run
+
+    [96mtests/parser.t
+est.ts[0m:[93m24[0m:
+[93m23[0m - 
+[91merror[0m[90m 
+TS2304: [0mCannot 
+find name 'likely'.
+
+    [7m24[0m     (12 
+/ 11 / 2025 - likely 
+DD / MM or MM / DD, 
+parser assumes MM / DD 
+in code comments ? No, 
+let's check 
+implementation.
+    [7m  [0m [91m   
+                   
+~~~~~~[0m
+    [96mtests/parser.t
+est.ts[0m:[93m24[0m:
+[93m30[0m - 
+[91merror[0m[90m 
+TS2304: [0mCannot 
+find name 'DD'.
+
+    [7m24[0m     (12 
+/ 11 / 2025 - likely 
+DD / MM or MM / DD, 
+parser assumes MM / DD 
+in code comments ? No, 
+let's check 
+implementation.
+    [7m  [0m [91m   
+                       
+   ~~[0m
+    [96mtests/parser.t
+est.ts[0m:[93m24[0m:
+[93m35[0m - 
+[91merror[0m[90m 
+TS2304: [0mCannot 
+find name 'MM'.
+
+    [7m24[0m     (12 
+/ 11 / 2025 - likely 
+DD / MM or MM / DD, 
+parser assumes MM / DD 
+in code comments ? No, 
+let's check 
+implementation.
+    [7m  [0m [91m   
+                       
+        ~~[0m
+    [96mtests/parser.t
+est.ts[0m:[93m24[0m:
+[93m38[0m - 
+[91merror[0m[90m 
+TS2304: [0mCannot 
+find name 'or'.
+
+    [7m24[0m     (12 
+/ 11 / 2025 - likely 
+DD / MM or MM / DD, 
+parser assumes MM / DD 
+in code comments ? No, 
+let's check 
+implementation.
+    [7m  [0m [91m   
+                       
+           ~~[0m
+    [96mtests/parser.t
+est.ts[0m:[93m24[0m:
+[93m41[0m - 
+[91merror[0m[90m 
+TS2304: [0mCannot 
+find name 'MM'.
+
+    [7m24[0m     (12 
+/ 11 / 2025 - likely 
+DD / MM or MM / DD, 
+parser assumes MM / DD 
+in code comments ? No, 
+let's check 
+implementation.
+    [7m  [0m [91m   
+                       
+              ~~[0m
+    [96mtests/parser.t
+est.ts[0m:[93m24[0m:
+[93m41[0m - 
+[91merror[0m[90m 
+TS2695: [0mLeft side 
+of comma operator is 
+unused and has no side 
+effects.
+
+    [7m24[0m     (12 
+/ 11 / 2025 - likely 
+DD / MM or MM / DD, 
+parser assumes MM / DD 
+in code comments ? No, 
+let's check 
+implementation.
+    [7m  [0m [91m   
+                       
+              
+~~~~~~~[0m
+    [96mtests/parser.t
+est.ts[0m:[93m24[0m:
+[93m46[0m - 
+[91merror[0m[90m 
+TS2304: [0mCannot 
+find name 'DD'.
+
+    [7m24[0m     (12 
+/ 11 / 2025 - likely 
+DD / MM or MM / DD, 
+parser assumes MM / DD 
+in code comments ? No, 
+let's check 
+implementation.
+    [7m  [0m [91m   
+                       
+                   
+~~[0m
+    [96mtests/parser.t
+est.ts[0m:[93m24[0m:
+[93m50[0m - 
+[91merror[0m[90m 
+TS2304: [0mCannot 
+find name 'parser'.
+
+    [7m24[0m     (12 
+/ 11 / 2025 - likely 
+DD / MM or MM / DD, 
+parser assumes MM / DD 
+in code comments ? No, 
+let's check 
+implementation.
+    [7m  [0m [91m   
+                       
+                       
+~~~~~~[0m
+    [96mtests/parser.t
+est.ts[0m:[93m24[0m:
+[93m57[0m - 
+[91merror[0m[90m 
+TS2304: [0mCannot 
+find name 'assumes'.
+
+    [7m24[0m     (12 
+/ 11 / 2025 - likely 
+DD / MM or MM / DD, 
+parser assumes MM / DD 
+in code comments ? No, 
+let's check 
+implementation.
+    [7m  [0m [91m   
+                       
+                       
+       ~~~~~~~[0m
+    [96mtests/parser.t
+est.ts[0m:[93m24[0m:
+[93m65[0m - 
+[91merror[0m[90m 
+TS2304: [0mCannot 
+find name 'MM'.
+
+    [7m24[0m     (12 
+/ 11 / 2025 - likely 
+DD / MM or MM / DD, 
+parser assumes MM / DD 
+in code comments ? No, 
+let's check 
+implementation.
+    [7m  [0m [91m   
+                       
+                       
+               ~~[0m
+    [96mtests/parser.t
+est.ts[0m:[93m24[0m:
+[93m70[0m - 
+[91merror[0m[90m 
+TS2304: [0mCannot 
+find name 'DD'.
+
+    [7m24[0m     (12 
+/ 11 / 2025 - likely 
+DD / MM or MM / DD, 
+parser assumes MM / DD 
+in code comments ? No, 
+let's check 
+implementation.
+    [7m  [0m [91m   
+                       
+                       
+                    
+~~[0m
+    [96mtests/parser.t
+est.ts[0m:[93m24[0m:
+[93m76[0m - 
+[91merror[0m[90m 
+TS2304: [0mCannot 
+find name 'code'.
+
+    [7m24[0m     (12 
+/ 11 / 2025 - likely 
+DD / MM or MM / DD, 
+parser assumes MM / DD 
+in code comments ? No, 
+let's check 
+implementation.
+    [7m  [0m [91m   
+                       
+                       
+                       
+   ~~~~[0m
+    [96mtests/parser.t
+est.ts[0m:[93m24[0m:
+[93m81[0m - 
+[91merror[0m[90m 
+TS2304: [0mCannot 
+find name 'comments'.
+
+    [7m24[0m     (12 
+/ 11 / 2025 - likely 
+DD / MM or MM / DD, 
+parser assumes MM / DD 
+in code comments ? No, 
+let's check 
+implementation.
+    [7m  [0m [91m   
+                       
+                       
+                       
+        ~~~~~~~~[0m
+    [96mtests/parser.t
+est.ts[0m:[93m24[0m:
+[93m81[0m - 
+[91merror[0m[90m 
+TS2695: [0mLeft side 
+of comma operator is 
+unused and has no side 
+effects.
+
+    [7m24[0m     (12 
+/ 11 / 2025 - likely 
+DD / MM or MM / DD, 
+parser assumes MM / DD 
+in code comments ? No, 
+let's check 
+implementation.
+    [7m  [0m [91m   
+                       
+                       
+                       
+        
+~~~~~~~~~~~~~[0m
+    [96mtests/parser.t
+est.ts[0m:[93m24[0m:
+[93m92[0m - 
+[91merror[0m[90m 
+TS2304: [0mCannot 
+find name 'No'.
+
+    [7m24[0m     (12 
+/ 11 / 2025 - likely 
+DD / MM or MM / DD, 
+parser assumes MM / DD 
+in code comments ? No, 
+let's check 
+implementation.
+    [7m  [0m [91m   
+                       
+                       
+                       
+                   
+~~[0m
+    [96mtests/parser.t
+est.ts[0m:[93m24[0m:
+[93m96[0m - 
+[91merror[0m[90m 
+TS2304: [0mCannot 
+find name 'let'.
+
+    [7m24[0m     (12 
+/ 11 / 2025 - likely 
+DD / MM or MM / DD, 
+parser assumes MM / DD 
+in code comments ? No, 
+let's check 
+implementation.
+    [7m  [0m [91m   
+                       
+                       
+                       
+                       
+~~~[0m
+    [96mtests/parser.t
+est.ts[0m:[93m24[0m:
+[93m30[0m - 
+[91merror[0m[90m 
+TS1005: [0m')' 
+expected.
+
+    [7m24[0m     (12 
+/ 11 / 2025 - likely 
+DD / MM or MM / DD, 
+parser assumes MM / DD 
+in code comments ? No, 
+let's check 
+implementation.
+    [7m  [0m [91m   
+                       
+   ~~[0m
+    [96mtests/parser.t
+est.ts[0m:[93m24[0m:
+[93m38[0m - 
+[91merror[0m[90m 
+TS1005: [0m';' 
+expected.
+
+    [7m24[0m     (12 
+/ 11 / 2025 - likely 
+DD / MM or MM / DD, 
+parser assumes MM / DD 
+in code comments ? No, 
+let's check 
+implementation.
+    [7m  [0m [91m   
+                       
+           ~~[0m
+    [96mtests/parser.t
+est.ts[0m:[93m24[0m:
+[93m57[0m - 
+[91merror[0m[90m 
+TS1005: [0m';' 
+expected.
+
+    [7m24[0m     (12 
+/ 11 / 2025 - likely 
+DD / MM or MM / DD, 
+parser assumes MM / DD 
+in code comments ? No, 
+let's check 
+implementation.
+    [7m  [0m [91m   
+                       
+                       
+       ~~~~~~~[0m
+    [96mtests/parser.t
+est.ts[0m:[93m24[0m:
+[93m81[0m - 
+[91merror[0m[90m 
+TS1005: [0m';' 
+expected.
+
+    [7m24[0m     (12 
+/ 11 / 2025 - likely 
+DD / MM or MM / DD, 
+parser assumes MM / DD 
+in code comments ? No, 
+let's check 
+implementation.
+    [7m  [0m [91m   
+                       
+                       
+                       
+        ~~~~~~~~[0m
+    [96mtests/parser.t
+est.ts[0m:[93m24[0m:
+[93m94[0m - 
+[91merror[0m[90m 
+TS1005: [0m':' 
+expected.
+
+    [7m24[0m     (12 
+/ 11 / 2025 - likely 
+DD / MM or MM / DD, 
+parser assumes MM / DD 
+in code comments ? No, 
+let's check 
+implementation.
+    [7m  [0m [91m   
+                       
+                       
+                       
+                     
+~[0m
+    [96mtests/parser.t
+est.ts[0m:[93m24[0m:
+[93m99[0m - 
+[91merror[0m[90m 
+TS1005: [0m';' 
+expected.
+
+    [7m24[0m     (12 
+/ 11 / 2025 - likely 
+DD / MM or MM / DD, 
+parser assumes MM / DD 
+in code comments ? No, 
+let's check 
+implementation.
+    [7m  [0m [91m   
+                       
+                       
+                       
+                       
+   ~~~~~~~~~~~~~~~~~~~~
+~~~~[0m
+    [96mtests/parser.t
+est.ts[0m:[93m24[0m:
+[93m123[0m - 
+[91merror[0m[90m 
+TS1002: 
+[0mUnterminated 
+string literal.
+
+    [7m24[0m     (12 
+/ 11 / 2025 - likely 
+DD / MM or MM / DD, 
+parser assumes MM / DD 
+in code comments ? No, 
+let's check 
+implementation.
+    [7m  [0m [91m   
+                       
+                       
+                       
+                       
+                       
+    [0m
+
+Test Suites: 1 failed, 
+1 total
+Tests:       0 total
+Snapshots:   0 total
+Time:        5.097 s
+Ran all test suites 
+matching /tests\\parser
+.test.ts/i.

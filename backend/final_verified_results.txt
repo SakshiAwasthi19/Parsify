@@ -1,0 +1,814 @@
+node : ts-jest[ts-jest-
+transformer] (WARN) 
+Define `ts-jest` 
+config under `globals` 
+is deprecated. Please 
+do
+At line:1 char:1
++ node --experimental-v
+m-modules ../node_modul
+es/jest/bin/jest.js 
+tests ...
++ ~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~
+    + CategoryInfo     
+         : NotSpecifi  
+  ed: (ts-jest[ts-je   
+ st...ated. Please     
+do:String) [], Rem    
+oteException
+    + FullyQualifiedEr 
+   rorId : NativeComm  
+  andError
+ 
+transform: {
+    <transform_regex>: 
+['ts-jest', { /* 
+ts-jest config goes 
+here in Jest */ }],
+},
+  console.log
+    [Auth] Secret loaded: true, Prefix: D0S01...
+
+      at src/lib/auth.ts:27:9
+
+(node:19176) 
+ExperimentalWarning: 
+VM Modules is an 
+experimental feature 
+and might change at 
+any time
+(Use `node 
+--trace-warnings ...` 
+to show where the 
+warning was created)
+  console.log
+    <-- POST /api/auth/sign-up/email
+
+      at log (../node_modules/hono/dist/middleware/logger/index.js:30:3)
+
+  console.log
+    prisma:query SELECT "public"."users"."id", "public"."users"."email", "public"."users"."emailVerified", "public"."users"."name", "public"."users"."image", "public"."users"."createdAt", "public"."users"."updatedAt" FROM "public"."users" WHERE "public"."users"."email" = $1 LIMIT $2 OFFSET $3
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    prisma:query INSERT INTO "public"."users" ("id","email","emailVerified","name","createdAt","updatedAt") VALUES ($1,$2,$3,$4,$5,$6) RETURNING "public"."users"."id", "public"."users"."email", "public"."users"."emailVerified", "public"."users"."name", "public"."users"."image", "public"."users"."createdAt", "public"."users"."updatedAt"
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    prisma:query INSERT INTO "public"."accounts" ("id","userId","accountId","providerId","password","createdAt","updatedAt") VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING "public"."accounts"."id", "public"."accounts"."userId", "public"."accounts"."accountId", "public"."accounts"."providerId", "public"."accounts"."accessToken", "public"."accounts"."refreshToken", "public"."accounts"."idToken", "public"."accounts"."expiresAt", "public"."accounts"."password", "public"."accounts"."createdAt", "public"."accounts"."updatedAt"
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    prisma:query INSERT INTO "public"."sessions" ("id","userId","token","expiresAt","ipAddress","userAgent","createdAt","updatedAt") VALUES ($1,$2,$3,$4,$5,$6,$7,$8) RETURNING "public"."sessions"."id", "public"."sessions"."userId", "public"."sessions"."token", "public"."sessions"."expiresAt", "public"."sessions"."ipAddress", "public"."sessions"."userAgent", "public"."sessions"."createdAt", "public"."sessions"."updatedAt"
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    --> POST /api/auth/sign-up/email [32m200[0m 616ms
+
+      at log (../node_modules/hono/dist/middleware/logger/index.js:30:3)
+
+  console.log
+    <-- POST /api/auth/sign-in/email
+
+      at log (../node_modules/hono/dist/middleware/logger/index.js:30:3)
+
+  console.log
+    prisma:query SELECT "public"."users"."id", "public"."users"."email", "public"."users"."emailVerified", "public"."users"."name", "public"."users"."image", "public"."users"."createdAt", "public"."users"."updatedAt" FROM "public"."users" WHERE "public"."users"."email" = $1 LIMIT $2 OFFSET $3
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    prisma:query SELECT "public"."accounts"."id", "public"."accounts"."userId", "public"."accounts"."accountId", "public"."accounts"."providerId", "public"."accounts"."accessToken", "public"."accounts"."refreshToken", "public"."accounts"."idToken", "public"."accounts"."expiresAt", "public"."accounts"."password", "public"."accounts"."createdAt", "public"."accounts"."updatedAt" FROM "public"."accounts" WHERE "public"."accounts"."userId" = $1 ORDER BY "public"."accounts"."id" ASC LIMIT $2 OFFSET $3
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    prisma:query INSERT INTO "public"."sessions" ("id","userId","token","expiresAt","ipAddress","userAgent","createdAt","updatedAt") VALUES ($1,$2,$3,$4,$5,$6,$7,$8) RETURNING "public"."sessions"."id", "public"."sessions"."userId", "public"."sessions"."token", "public"."sessions"."expiresAt", "public"."sessions"."ipAddress", "public"."sessions"."userAgent", "public"."sessions"."createdAt", "public"."sessions"."updatedAt"
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    --> POST /api/auth/sign-in/email [32m200[0m 552ms
+
+      at log (../node_modules/hono/dist/middleware/logger/index.js:30:3)
+
+  console.log
+    <-- GET /api/auth/token
+
+      at log (../node_modules/hono/dist/middleware/logger/index.js:30:3)
+
+  console.log
+    prisma:query SELECT "public"."sessions"."id", "public"."sessions"."userId", "public"."sessions"."token", "public"."sessions"."expiresAt", "public"."sessions"."ipAddress", "public"."sessions"."userAgent", "public"."sessions"."createdAt", "public"."sessions"."updatedAt" FROM "public"."sessions" WHERE "public"."sessions"."token" = $1 LIMIT $2 OFFSET $3
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    prisma:query SELECT "public"."users"."id", "public"."users"."email", "public"."users"."emailVerified", "public"."users"."name", "public"."users"."image", "public"."users"."createdAt", "public"."users"."updatedAt" FROM "public"."users" WHERE "public"."users"."id" = $1 LIMIT $2 OFFSET $3
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    prisma:query SELECT "public"."jwks"."id", "public"."jwks"."publicKey", "public"."jwks"."privateKey", "public"."jwks"."createdAt" FROM "public"."jwks" WHERE 1=1 ORDER BY "public"."jwks"."id" ASC LIMIT $1 OFFSET $2
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+(node:19176) 
+ExperimentalWarning: 
+The Ed25519 Web Crypto 
+API algorithm is an 
+experimental feature 
+and might change at 
+any time
+  console.log
+    --> GET /api/auth/token [32m200[0m 76ms
+
+      at log (../node_modules/hono/dist/middleware/logger/index.js:30:3)
+
+  console.log
+    <-- POST /api/auth/sign-in/email
+
+      at log (../node_modules/hono/dist/middleware/logger/index.js:30:3)
+
+  console.log
+    prisma:query SELECT "public"."users"."id", "public"."users"."email", "public"."users"."emailVerified", "public"."users"."name", "public"."users"."image", "public"."users"."createdAt", "public"."users"."updatedAt" FROM "public"."users" WHERE "public"."users"."email" = $1 LIMIT $2 OFFSET $3
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    prisma:query SELECT "public"."accounts"."id", "public"."accounts"."userId", "public"."accounts"."accountId", "public"."accounts"."providerId", "public"."accounts"."accessToken", "public"."accounts"."refreshToken", "public"."accounts"."idToken", "public"."accounts"."expiresAt", "public"."accounts"."password", "public"."accounts"."createdAt", "public"."accounts"."updatedAt" FROM "public"."accounts" WHERE "public"."accounts"."userId" = $1 ORDER BY "public"."accounts"."id" ASC LIMIT $2 OFFSET $3
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.error
+    [2m2026-03-02T01:57:39.304Z[0m [31mERROR[0m [1m[Better Auth]:[0m Invalid password
+
+    [0m [90m 108 |[39m app[33m.[39mall([32m"/api/auth/*"[39m[33m,[39m [36masync[39m (c) [33m=>[39m {
+     [90m 109 |[39m   [36mtry[39m {
+    [31m[1m>[22m[39m[90m 110 |[39m     [36mconst[39m res [33m=[39m [36mawait[39m auth[33m.[39mhandler(c[33m.[39mreq[33m.[39mraw)[33m;[39m
+     [90m     |[39m                 [31m[1m^[22m[39m
+     [90m 111 |[39m     [36mreturn[39m res[33m;[39m
+     [90m 112 |[39m   } [36mcatch[39m (error) {
+     [90m 113 |[39m     [36mreturn[39m c[33m.[39mjson({ error[33m:[39m [32m"Authentication error"[39m[33m,[39m details[33m:[39m [33mString[39m(error) }[33m,[39m [35m500[39m)[33m;[39m[0m
+
+      at LogFunc (../node_modules/@better-auth/core/src/env/logger.ts:117:13)
+      at Object.error (../node_modules/@better-auth/core/src/env/logger.ts:133:5)
+      at ../node_modules/better-auth/src/api/routes/sign-in.ts:498:24
+      at internalHandler (../node_modules/better-call/src/endpoint.ts:507:20)
+      at ../node_modules/better-auth/src/api/to-auth-endpoints.ts:119:22
+      at processRequest (../node_modules/better-call/src/router.ts:233:22)
+      at handler (../node_modules/better-call/src/router.ts:275:16)
+      at src/app.ts:110:17
+      at dispatch (../node_modules/hono/dist/compose.js:22:17)
+      at cors2 (../node_modules/hono/dist/middleware/cors/index.js:79:5)
+      at dispatch (../node_modules/hono/dist/compose.js:22:17)
+      at logger2 (../node_modules/hono/dist/middleware/logger/index.js:38:5)
+      at dispatch (../node_modules/hono/dist/compose.js:22:17)
+      at ../node_modules/hono/dist/hono-base.js:301:25
+      at Server.<anonymous> (tests/auth.test.ts:35:22)
+
+  console.log
+    --> POST /api/auth/sign-in/email [33m401[0m 438ms
+
+      at log (../node_modules/hono/dist/middleware/logger/index.js:30:3)
+
+  console.log
+    <-- GET /api/transactions?limit=1
+
+      at log (../node_modules/hono/dist/middleware/logger/index.js:30:3)
+
+  console.error
+    ??? Missing or invalid Authorization header
+
+    [0m [90m 24 |[39m
+     [90m 25 |[39m     [36mif[39m ([33m![39mauthHeader [33m||[39m [33m![39mauthHeader[33m.[39mstartsWith([32m"Bearer "[39m)) {
+    [31m[1m>[22m[39m[90m 26 |[39m       console[33m.[39merror([32m"??? Missing or invalid Authorization header"[39m)[33m;[39m
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m 27 |[39m       [36mreturn[39m c[33m.[39mjson({ error[33m:[39m [32m"Unauthorized: Missing or invalid token"[39m }[33m,[39m [35m401[39m)[33m;[39m
+     [90m 28 |[39m     }
+     [90m 29 |[39m[0m
+
+      at authMiddleware (src/middleware/auth.ts:26:15)
+      at dispatch (../node_modules/hono/dist/compose.js:22:23)
+      at ../node_modules/hono/dist/compose.js:22:46
+      at cors2 (../node_modules/hono/dist/middleware/cors/index.js:79:11)
+      at dispatch (../node_modules/hono/dist/compose.js:22:17)
+      at logger2 (../node_modules/hono/dist/middleware/logger/index.js:38:5)
+      at dispatch (../node_modules/hono/dist/compose.js:22:17)
+      at ../node_modules/hono/dist/hono-base.js:301:25
+      at Server.<anonymous> (tests/auth.test.ts:35:22)
+
+  console.log
+    --> GET /api/transactions?limit=1 [33m401[0m 23ms
+
+      at log (../node_modules/hono/dist/middleware/logger/index.js:30:3)
+
+PASS 
+tests/auth.test.ts 
+(13.684 s)
+  Auth flows
+    ??? User 
+registration with 
+valid email/password 
+(712 ms)
+    ??? User login 
+returns JWT token (650 
+ms)
+    ??? Invalid login 
+credentials fail (451 
+ms)
+    ??? Protected 
+route rejects request 
+without token (32 ms)
+
+  console.log
+    [Auth] Secret loaded: true, Prefix: D0S01...
+
+      at src/lib/auth.ts:27:9
+
+  console.log
+    prisma:query DELETE FROM "public"."transactions" WHERE 1=1
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    prisma:query DELETE FROM "public"."organization_members" WHERE 1=1
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    prisma:query DELETE FROM "public"."organizations" WHERE 1=1
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    prisma:query DELETE FROM "public"."sessions" WHERE 1=1
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    prisma:query DELETE FROM "public"."accounts" WHERE 1=1
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    prisma:query DELETE FROM "public"."users" WHERE 1=1
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    <-- GET /api/transactions
+
+      at log (../node_modules/hono/dist/middleware/logger/index.js:30:3)
+
+  console.log
+    ???? Token received, length: 167 prefix: eyJhbGciOiJIUzI1NiIs...
+
+      at authMiddleware (src/middleware/auth.ts:31:13)
+
+  console.log
+    prisma:query SELECT "public"."sessions"."id", "public"."sessions"."userId", "public"."sessions"."token", "public"."sessions"."expiresAt", "public"."sessions"."ipAddress", "public"."sessions"."userAgent", "public"."sessions"."createdAt", "public"."sessions"."updatedAt" FROM "public"."sessions" WHERE (("public"."sessions"."id" = $1 OR "public"."sessions"."token" = $2) AND "public"."sessions"."expiresAt" > $3) LIMIT $4 OFFSET $5
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    ???? Better Auth getSession result: Invalid
+
+      at authMiddleware (src/middleware/auth.ts:69:17)
+
+  console.log
+    ??? Manual JWT verification successful
+
+      at authMiddleware (src/middleware/auth.ts:95:19)
+
+  console.log
+    ??? User ID from session: user-a-uuid-123
+
+      at authMiddleware (src/middleware/auth.ts:112:13)
+
+  console.log
+    ???? User email from session: usera@example.com
+
+      at authMiddleware (src/middleware/auth.ts:113:13)
+
+  console.log
+    prisma:query SELECT "public"."users"."id", "public"."users"."email", "public"."users"."emailVerified", "public"."users"."name", "public"."users"."image", "public"."users"."createdAt", "public"."users"."updatedAt" FROM "public"."users" WHERE ("public"."users"."id" = $1 AND 1=1) LIMIT $2 OFFSET $3
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    ?????? User not found in database, creating from session...
+
+      at authMiddleware (src/middleware/auth.ts:136:15)
+
+  console.log
+    ???? User data to create: {
+      userId: 'user-a-uuid-123',
+      userEmail: 'usera@example.com',
+      userName: 'User A'
+    }
+
+      at authMiddleware (src/middleware/auth.ts:137:15)
+
+  console.log
+    prisma:query BEGIN
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    ???? Creating user in database...
+
+      at src/middleware/auth.ts:143:19
+
+  console.log
+    prisma:query INSERT INTO "public"."users" ("id","email","emailVerified","name","createdAt","updatedAt") VALUES ($1,$2,$3,$4,$5,$6) RETURNING "public"."users"."id", "public"."users"."email", "public"."users"."emailVerified", "public"."users"."name", "public"."users"."image", "public"."users"."createdAt", "public"."users"."updatedAt"
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    ??? User created: user-a-uuid-123
+
+      at src/middleware/auth.ts:152:19
+
+  console.log
+    ???? Creating organization...
+
+      at src/middleware/auth.ts:155:19
+
+  console.log
+    prisma:query INSERT INTO "public"."organizations" ("id","name","slug","createdAt","updatedAt") VALUES ($1,$2,$3,$4,$5) RETURNING "public"."organizations"."id", "public"."organizations"."name", "public"."organizations"."slug", "public"."organizations"."createdAt", "public"."organizations"."updatedAt"
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    ??? Organization created: 4b456cd5-230f-42eb-9bb7-1822b0dd1927
+
+      at src/middleware/auth.ts:165:19
+
+  console.log
+    ???? Creating membership...
+
+      at src/middleware/auth.ts:168:19
+
+  console.log
+    prisma:query INSERT INTO "public"."organization_members" ("id","userId","organizationId","role","createdAt","updatedAt") VALUES ($1,$2,$3,$4,$5,$6) RETURNING "public"."organization_members"."id", "public"."organization_members"."userId", "public"."organization_members"."organizationId", "public"."organization_members"."role", "public"."organization_members"."createdAt", "public"."organization_members"."updatedAt"
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    ??? Membership created
+
+      at src/middleware/auth.ts:178:19
+
+  console.log
+    prisma:query COMMIT
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    ??? Created user and organization: {
+      userId: 'user-a-uuid-123',
+      orgId: '4b456cd5-230f-42eb-9bb7-1822b0dd1927'
+    }
+
+      at authMiddleware (src/middleware/auth.ts:183:17)
+
+  console.log
+    prisma:query SELECT "public"."users"."id", "public"."users"."email", "public"."users"."emailVerified", "public"."users"."name", "public"."users"."image", "public"."users"."createdAt", "public"."users"."updatedAt" FROM "public"."users" WHERE ("public"."users"."id" = $1 AND 1=1) LIMIT $2 OFFSET $3
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    prisma:query SELECT "public"."organization_members"."id", "public"."organization_members"."userId", "public"."organization_members"."organizationId", "public"."organization_members"."role", "public"."organization_members"."createdAt", "public"."organization_members"."updatedAt" FROM "public"."organization_members" WHERE "public"."organization_members"."userId" IN ($1) ORDER BY "public"."organization_members"."createdAt" ASC LIMIT $2 OFFSET $3
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    prisma:query SELECT "public"."organizations"."id", "public"."organizations"."name", "public"."organizations"."slug", "public"."organizations"."createdAt", "public"."organizations"."updatedAt" FROM "public"."organizations" WHERE "public"."organizations"."id" IN ($1) OFFSET $2
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    ??? Organization ID: 4b456cd5-230f-42eb-9bb7-1822b0dd1927
+
+      at authMiddleware (src/middleware/auth.ts:361:13)
+
+  console.log
+    ??? Auth middleware passed
+
+      at authMiddleware (src/middleware/auth.ts:372:13)
+
+  console.log
+    prisma:query SELECT "public"."transactions"."id", "public"."transactions"."date", "public"."transactions"."description", "public"."transactions"."amount", "public"."transactions"."balance", "public"."transactions"."createdAt" FROM "public"."transactions" WHERE ("public"."transactions"."userId" = $1 AND "public"."transactions"."organizationId" = $2) ORDER BY "public"."transactions"."createdAt" DESC LIMIT $3 OFFSET $4
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    --> GET /api/transactions [32m200[0m 56ms
+
+      at log (../node_modules/hono/dist/middleware/logger/index.js:30:3)
+
+  console.log
+    <-- GET /api/transactions
+
+      at log (../node_modules/hono/dist/middleware/logger/index.js:30:3)
+
+  console.log
+    ???? Token received, length: 167 prefix: eyJhbGciOiJIUzI1NiIs...
+
+      at authMiddleware (src/middleware/auth.ts:31:13)
+
+  console.log
+    prisma:query SELECT "public"."sessions"."id", "public"."sessions"."userId", "public"."sessions"."token", "public"."sessions"."expiresAt", "public"."sessions"."ipAddress", "public"."sessions"."userAgent", "public"."sessions"."createdAt", "public"."sessions"."updatedAt" FROM "public"."sessions" WHERE (("public"."sessions"."id" = $1 OR "public"."sessions"."token" = $2) AND "public"."sessions"."expiresAt" > $3) LIMIT $4 OFFSET $5
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    ???? Better Auth getSession result: Invalid
+
+      at authMiddleware (src/middleware/auth.ts:69:17)
+
+  console.log
+    ??? Manual JWT verification successful
+
+      at authMiddleware (src/middleware/auth.ts:95:19)
+
+  console.log
+    ??? User ID from session: user-b-uuid-456
+
+      at authMiddleware (src/middleware/auth.ts:112:13)
+
+  console.log
+    ???? User email from session: userb@example.com
+
+      at authMiddleware (src/middleware/auth.ts:113:13)
+
+  console.log
+    prisma:query SELECT "public"."users"."id", "public"."users"."email", "public"."users"."emailVerified", "public"."users"."name", "public"."users"."image", "public"."users"."createdAt", "public"."users"."updatedAt" FROM "public"."users" WHERE ("public"."users"."id" = $1 AND 1=1) LIMIT $2 OFFSET $3
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    ?????? User not found in database, creating from session...
+
+      at authMiddleware (src/middleware/auth.ts:136:15)
+
+  console.log
+    ???? User data to create: {
+      userId: 'user-b-uuid-456',
+      userEmail: 'userb@example.com',
+      userName: 'User B'
+    }
+
+      at authMiddleware (src/middleware/auth.ts:137:15)
+
+  console.log
+    prisma:query BEGIN
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    ???? Creating user in database...
+
+      at src/middleware/auth.ts:143:19
+
+  console.log
+    prisma:query INSERT INTO "public"."users" ("id","email","emailVerified","name","createdAt","updatedAt") VALUES ($1,$2,$3,$4,$5,$6) RETURNING "public"."users"."id", "public"."users"."email", "public"."users"."emailVerified", "public"."users"."name", "public"."users"."image", "public"."users"."createdAt", "public"."users"."updatedAt"
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    ??? User created: user-b-uuid-456
+
+      at src/middleware/auth.ts:152:19
+
+  console.log
+    ???? Creating organization...
+
+      at src/middleware/auth.ts:155:19
+
+  console.log
+    prisma:query INSERT INTO "public"."organizations" ("id","name","slug","createdAt","updatedAt") VALUES ($1,$2,$3,$4,$5) RETURNING "public"."organizations"."id", "public"."organizations"."name", "public"."organizations"."slug", "public"."organizations"."createdAt", "public"."organizations"."updatedAt"
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    ??? Organization created: b3b14f03-ca77-4b36-b20f-4a5a8308ee17
+
+      at src/middleware/auth.ts:165:19
+
+  console.log
+    ???? Creating membership...
+
+      at src/middleware/auth.ts:168:19
+
+  console.log
+    prisma:query INSERT INTO "public"."organization_members" ("id","userId","organizationId","role","createdAt","updatedAt") VALUES ($1,$2,$3,$4,$5,$6) RETURNING "public"."organization_members"."id", "public"."organization_members"."userId", "public"."organization_members"."organizationId", "public"."organization_members"."role", "public"."organization_members"."createdAt", "public"."organization_members"."updatedAt"
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    ??? Membership created
+
+      at src/middleware/auth.ts:178:19
+
+  console.log
+    prisma:query COMMIT
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    ??? Created user and organization: {
+      userId: 'user-b-uuid-456',
+      orgId: 'b3b14f03-ca77-4b36-b20f-4a5a8308ee17'
+    }
+
+      at authMiddleware (src/middleware/auth.ts:183:17)
+
+  console.log
+    prisma:query SELECT "public"."users"."id", "public"."users"."email", "public"."users"."emailVerified", "public"."users"."name", "public"."users"."image", "public"."users"."createdAt", "public"."users"."updatedAt" FROM "public"."users" WHERE ("public"."users"."id" = $1 AND 1=1) LIMIT $2 OFFSET $3
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    prisma:query SELECT "public"."organization_members"."id", "public"."organization_members"."userId", "public"."organization_members"."organizationId", "public"."organization_members"."role", "public"."organization_members"."createdAt", "public"."organization_members"."updatedAt" FROM "public"."organization_members" WHERE "public"."organization_members"."userId" IN ($1) ORDER BY "public"."organization_members"."createdAt" ASC LIMIT $2 OFFSET $3
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    prisma:query SELECT "public"."organizations"."id", "public"."organizations"."name", "public"."organizations"."slug", "public"."organizations"."createdAt", "public"."organizations"."updatedAt" FROM "public"."organizations" WHERE "public"."organizations"."id" IN ($1) OFFSET $2
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    ??? Organization ID: b3b14f03-ca77-4b36-b20f-4a5a8308ee17
+
+      at authMiddleware (src/middleware/auth.ts:361:13)
+
+  console.log
+    ??? Auth middleware passed
+
+      at authMiddleware (src/middleware/auth.ts:372:13)
+
+  console.log
+    prisma:query SELECT "public"."transactions"."id", "public"."transactions"."date", "public"."transactions"."description", "public"."transactions"."amount", "public"."transactions"."balance", "public"."transactions"."createdAt" FROM "public"."transactions" WHERE ("public"."transactions"."userId" = $1 AND "public"."transactions"."organizationId" = $2) ORDER BY "public"."transactions"."createdAt" DESC LIMIT $3 OFFSET $4
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    --> GET /api/transactions [32m200[0m 47ms
+
+      at log (../node_modules/hono/dist/middleware/logger/index.js:30:3)
+
+  console.log
+    <-- POST /api/transactions/extract
+
+      at log (../node_modules/hono/dist/middleware/logger/index.js:30:3)
+
+  console.log
+    ???? Token received, length: 167 prefix: eyJhbGciOiJIUzI1NiIs...
+
+      at authMiddleware (src/middleware/auth.ts:31:13)
+
+  console.log
+    prisma:query SELECT "public"."sessions"."id", "public"."sessions"."userId", "public"."sessions"."token", "public"."sessions"."expiresAt", "public"."sessions"."ipAddress", "public"."sessions"."userAgent", "public"."sessions"."createdAt", "public"."sessions"."updatedAt" FROM "public"."sessions" WHERE (("public"."sessions"."id" = $1 OR "public"."sessions"."token" = $2) AND "public"."sessions"."expiresAt" > $3) LIMIT $4 OFFSET $5
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    ???? Better Auth getSession result: Invalid
+
+      at authMiddleware (src/middleware/auth.ts:69:17)
+
+  console.log
+    ??? Manual JWT verification successful
+
+      at authMiddleware (src/middleware/auth.ts:95:19)
+
+  console.log
+    ??? User ID from session: user-a-uuid-123
+
+      at authMiddleware (src/middleware/auth.ts:112:13)
+
+  console.log
+    ???? User email from session: usera@example.com
+
+      at authMiddleware (src/middleware/auth.ts:113:13)
+
+  console.log
+    prisma:query SELECT "public"."users"."id", "public"."users"."email", "public"."users"."emailVerified", "public"."users"."name", "public"."users"."image", "public"."users"."createdAt", "public"."users"."updatedAt" FROM "public"."users" WHERE ("public"."users"."id" = $1 AND 1=1) LIMIT $2 OFFSET $3
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    prisma:query SELECT "public"."organization_members"."id", "public"."organization_members"."userId", "public"."organization_members"."organizationId", "public"."organization_members"."role", "public"."organization_members"."createdAt", "public"."organization_members"."updatedAt" FROM "public"."organization_members" WHERE "public"."organization_members"."userId" IN ($1) ORDER BY "public"."organization_members"."createdAt" ASC LIMIT $2 OFFSET $3
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    prisma:query SELECT "public"."organizations"."id", "public"."organizations"."name", "public"."organizations"."slug", "public"."organizations"."createdAt", "public"."organizations"."updatedAt" FROM "public"."organizations" WHERE "public"."organizations"."id" IN ($1) OFFSET $2
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    ??? Organization ID: 4b456cd5-230f-42eb-9bb7-1822b0dd1927
+
+      at authMiddleware (src/middleware/auth.ts:361:13)
+
+  console.log
+    ??? Auth middleware passed
+
+      at authMiddleware (src/middleware/auth.ts:372:13)
+
+  console.log
+    prisma:query INSERT INTO "public"."transactions" ("id","userId","organizationId","date","description","amount","balance","rawText","createdAt") VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING "public"."transactions"."id", "public"."transactions"."userId", "public"."transactions"."organizationId", "public"."transactions"."date", "public"."transactions"."description", "public"."transactions"."amount", "public"."transactions"."balance", "public"."transactions"."rawText", "public"."transactions"."createdAt"
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    --> POST /api/transactions/extract [32m201[0m 37ms
+
+      at log (../node_modules/hono/dist/middleware/logger/index.js:30:3)
+
+  console.log
+    <-- GET /api/transactions
+
+      at log (../node_modules/hono/dist/middleware/logger/index.js:30:3)
+
+  console.log
+    ???? Token received, length: 167 prefix: eyJhbGciOiJIUzI1NiIs...
+
+      at authMiddleware (src/middleware/auth.ts:31:13)
+
+  console.log
+    prisma:query SELECT "public"."sessions"."id", "public"."sessions"."userId", "public"."sessions"."token", "public"."sessions"."expiresAt", "public"."sessions"."ipAddress", "public"."sessions"."userAgent", "public"."sessions"."createdAt", "public"."sessions"."updatedAt" FROM "public"."sessions" WHERE (("public"."sessions"."id" = $1 OR "public"."sessions"."token" = $2) AND "public"."sessions"."expiresAt" > $3) LIMIT $4 OFFSET $5
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    ???? Better Auth getSession result: Invalid
+
+      at authMiddleware (src/middleware/auth.ts:69:17)
+
+  console.log
+    ??? Manual JWT verification successful
+
+      at authMiddleware (src/middleware/auth.ts:95:19)
+
+  console.log
+    ??? User ID from session: user-b-uuid-456
+
+      at authMiddleware (src/middleware/auth.ts:112:13)
+
+  console.log
+    ???? User email from session: userb@example.com
+
+      at authMiddleware (src/middleware/auth.ts:113:13)
+
+  console.log
+    prisma:query SELECT "public"."users"."id", "public"."users"."email", "public"."users"."emailVerified", "public"."users"."name", "public"."users"."image", "public"."users"."createdAt", "public"."users"."updatedAt" FROM "public"."users" WHERE ("public"."users"."id" = $1 AND 1=1) LIMIT $2 OFFSET $3
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    prisma:query SELECT "public"."organization_members"."id", "public"."organization_members"."userId", "public"."organization_members"."organizationId", "public"."organization_members"."role", "public"."organization_members"."createdAt", "public"."organization_members"."updatedAt" FROM "public"."organization_members" WHERE "public"."organization_members"."userId" IN ($1) ORDER BY "public"."organization_members"."createdAt" ASC LIMIT $2 OFFSET $3
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    prisma:query SELECT "public"."organizations"."id", "public"."organizations"."name", "public"."organizations"."slug", "public"."organizations"."createdAt", "public"."organizations"."updatedAt" FROM "public"."organizations" WHERE "public"."organizations"."id" IN ($1) OFFSET $2
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    ??? Organization ID: b3b14f03-ca77-4b36-b20f-4a5a8308ee17
+
+      at authMiddleware (src/middleware/auth.ts:361:13)
+
+  console.log
+    ??? Auth middleware passed
+
+      at authMiddleware (src/middleware/auth.ts:372:13)
+
+  console.log
+    prisma:query SELECT "public"."transactions"."id", "public"."transactions"."date", "public"."transactions"."description", "public"."transactions"."amount", "public"."transactions"."balance", "public"."transactions"."createdAt" FROM "public"."transactions" WHERE ("public"."transactions"."userId" = $1 AND "public"."transactions"."organizationId" = $2) ORDER BY "public"."transactions"."createdAt" DESC LIMIT $3 OFFSET $4
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    --> GET /api/transactions [32m200[0m 17ms
+
+      at log (../node_modules/hono/dist/middleware/logger/index.js:30:3)
+
+  console.log
+    <-- GET /api/transactions
+
+      at log (../node_modules/hono/dist/middleware/logger/index.js:30:3)
+
+  console.log
+    ???? Token received, length: 167 prefix: eyJhbGciOiJIUzI1NiIs...
+
+      at authMiddleware (src/middleware/auth.ts:31:13)
+
+  console.log
+    prisma:query SELECT "public"."sessions"."id", "public"."sessions"."userId", "public"."sessions"."token", "public"."sessions"."expiresAt", "public"."sessions"."ipAddress", "public"."sessions"."userAgent", "public"."sessions"."createdAt", "public"."sessions"."updatedAt" FROM "public"."sessions" WHERE (("public"."sessions"."id" = $1 OR "public"."sessions"."token" = $2) AND "public"."sessions"."expiresAt" > $3) LIMIT $4 OFFSET $5
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    ???? Better Auth getSession result: Invalid
+
+      at authMiddleware (src/middleware/auth.ts:69:17)
+
+  console.log
+    ??? Manual JWT verification successful
+
+      at authMiddleware (src/middleware/auth.ts:95:19)
+
+  console.log
+    ??? User ID from session: user-a-uuid-123
+
+      at authMiddleware (src/middleware/auth.ts:112:13)
+
+  console.log
+    ???? User email from session: usera@example.com
+
+      at authMiddleware (src/middleware/auth.ts:113:13)
+
+  console.log
+    prisma:query SELECT "public"."users"."id", "public"."users"."email", "public"."users"."emailVerified", "public"."users"."name", "public"."users"."image", "public"."users"."createdAt", "public"."users"."updatedAt" FROM "public"."users" WHERE ("public"."users"."id" = $1 AND 1=1) LIMIT $2 OFFSET $3
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    prisma:query SELECT "public"."organization_members"."id", "public"."organization_members"."userId", "public"."organization_members"."organizationId", "public"."organization_members"."role", "public"."organization_members"."createdAt", "public"."organization_members"."updatedAt" FROM "public"."organization_members" WHERE "public"."organization_members"."userId" IN ($1) ORDER BY "public"."organization_members"."createdAt" ASC LIMIT $2 OFFSET $3
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    prisma:query SELECT "public"."organizations"."id", "public"."organizations"."name", "public"."organizations"."slug", "public"."organizations"."createdAt", "public"."organizations"."updatedAt" FROM "public"."organizations" WHERE "public"."organizations"."id" IN ($1) OFFSET $2
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    ??? Organization ID: 4b456cd5-230f-42eb-9bb7-1822b0dd1927
+
+      at authMiddleware (src/middleware/auth.ts:361:13)
+
+  console.log
+    ??? Auth middleware passed
+
+      at authMiddleware (src/middleware/auth.ts:372:13)
+
+  console.log
+    prisma:query SELECT "public"."transactions"."id", "public"."transactions"."date", "public"."transactions"."description", "public"."transactions"."amount", "public"."transactions"."balance", "public"."transactions"."createdAt" FROM "public"."transactions" WHERE ("public"."transactions"."userId" = $1 AND "public"."transactions"."organizationId" = $2) ORDER BY "public"."transactions"."createdAt" DESC LIMIT $3 OFFSET $4
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    --> GET /api/transactions [32m200[0m 17ms
+
+      at log (../node_modules/hono/dist/middleware/logger/index.js:30:3)
+
+PASS 
+tests/isolation.test.ts
+  Data Isolation Tests
+    ??? Verify 
+multi-user data 
+isolation (232 ms)
+
+PASS 
+tests/parser.test.ts
+  Transaction Parser
+    ??? Parser handles 
+Sample 1 format 
+correctly (Multi-line) 
+(8 ms)
+    ??? Parser handles 
+Sample 1 format 
+correctly 
+(Single-line) (1 ms)
+    ??? Parser handles 
+Sample 2 format 
+correctly (7 ms)
+    ??? Parser handles 
+Sample 3 format 
+correctly (6 ms)
+
+Test Suites: 3 passed, 
+3 total
+Tests:       9 passed, 
+9 total
+Snapshots:   0 total
+Time:        17.036 s
+Ran all test suites 
+matching /tests\\parser
+.test.ts|tests\\isolati
+on.test.ts|tests\\auth.
+test.ts/i.

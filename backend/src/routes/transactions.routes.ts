@@ -66,8 +66,8 @@ transactionRoutes.post("/extract", async (c) => {
     console.error("Extract transaction error:", error)
 
     // Handle parsing errors
-    if (error.message?.includes("Failed to parse")) {
-      return c.json({ error: "Invalid transaction format", details: error.message }, 400)
+    if (error.message?.includes("Please include") || error.message?.includes("parse")) {
+      return c.json({ error: error.message }, 400)
     }
 
     return c.json({ error: "Failed to extract transaction" }, 500)

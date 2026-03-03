@@ -1,0 +1,582 @@
+
+> backend@1.0.0 test
+> node --experimental-vm-modules ../node_modules/jest/bin/jest.js tests/auth.test.ts
+
+  console.log
+    [Auth] Secret loaded: true, Prefix: D0S01...
+
+      at src/lib/auth.ts:27:9
+
+  console.log
+    <-- POST /api/auth/sign-up/email
+
+      at log (../node_modules/hono/dist/middleware/logger/index.js:30:3)
+
+  console.log
+    prisma:query SELECT "public"."users"."id", "public"."users"."email", "public"."users"."emailVerified", "public"."users"."name", "public"."users"."image", "public"."users"."createdAt", "public"."users"."updatedAt" FROM "public"."users" WHERE "public"."users"."email" = $1 LIMIT $2 OFFSET $3
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    prisma:query INSERT INTO "public"."users" ("id","email","emailVerified","name","createdAt","updatedAt") VALUES ($1,$2,$3,$4,$5,$6) RETURNING "public"."users"."id", "public"."users"."email", "public"."users"."emailVerified", "public"."users"."name", "public"."users"."image", "public"."users"."createdAt", "public"."users"."updatedAt"
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    prisma:query INSERT INTO "public"."accounts" ("id","userId","accountId","providerId","password","createdAt","updatedAt") VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING "public"."accounts"."id", "public"."accounts"."userId", "public"."accounts"."accountId", "public"."accounts"."providerId", "public"."accounts"."accessToken", "public"."accounts"."refreshToken", "public"."accounts"."idToken", "public"."accounts"."scope", "public"."accounts"."password", "public"."accounts"."createdAt", "public"."accounts"."updatedAt"
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    prisma:error 
+    Invalid `prisma.account.create()` invocation:
+    
+    
+    The column `accounts.scope` does not exist in the current database.
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.error
+    [2m2026-03-02T00:28:10.032Z[0m [31mERROR[0m [1m[Better Auth]:[0m 
+    Invalid `prisma.account.create()` invocation:
+    
+    
+    The column `accounts.scope` does not exist in the current database.
+
+    [0m [90m 108 |[39m app[33m.[39mall([32m"/api/auth/*"[39m[33m,[39m [36masync[39m (c) [33m=>[39m {
+     [90m 109 |[39m   [36mtry[39m {
+    [31m[1m>[22m[39m[90m 110 |[39m     [36mconst[39m res [33m=[39m [36mawait[39m auth[33m.[39mhandler(c[33m.[39mreq[33m.[39mraw)[33m;[39m
+     [90m     |[39m                 [31m[1m^[22m[39m
+     [90m 111 |[39m     [36mreturn[39m res[33m;[39m
+     [90m 112 |[39m   } [36mcatch[39m (error) {
+     [90m 113 |[39m     [36mreturn[39m c[33m.[39mjson({ error[33m:[39m [32m"Authentication error"[39m[33m,[39m details[33m:[39m [33mString[39m(error) }[33m,[39m [35m500[39m)[33m;[39m[0m
+
+      at LogFunc (../node_modules/@better-auth/core/src/env/logger.ts:117:13)
+      at Object.error (../node_modules/@better-auth/core/src/env/logger.ts:133:5)
+      at Object.onError (../node_modules/better-auth/src/api/index.ts:348:19)
+      at processRequest (../node_modules/better-call/src/router.ts:238:41)
+      at handler (../node_modules/better-call/src/router.ts:275:16)
+      at src/app.ts:110:17
+      at dispatch (../node_modules/hono/dist/compose.js:22:17)
+      at cors2 (../node_modules/hono/dist/middleware/cors/index.js:79:5)
+      at dispatch (../node_modules/hono/dist/compose.js:22:17)
+      at logger2 (../node_modules/hono/dist/middleware/logger/index.js:38:5)
+      at dispatch (../node_modules/hono/dist/compose.js:22:17)
+      at ../node_modules/hono/dist/hono-base.js:301:25
+      at Server.<anonymous> (tests/auth.test.ts:35:22)
+
+  console.error
+    # SERVER_ERROR:  PrismaClientKnownRequestError: 
+    Invalid `prisma.account.create()` invocation:
+    
+    
+    The column `accounts.scope` does not exist in the current database.
+        at ei.handleRequestError (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\@prisma\client\src\runtime\RequestHandler.ts:228:13)
+        at ei.handleAndLogRequestError (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+        at ei.request (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+        at a (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+        at Object.create (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\better-auth\src\adapters\prisma-adapter\prisma-adapter.ts:342:21)
+        at Object.create (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\@better-auth\core\src\db\adapter\factory.ts:872:17)
+        at createWithHooks (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\better-auth\src\db\with-hooks.ts:52:7)
+        at Object.linkAccount (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\better-auth\src\db\internal-adapter.ts:860:21)
+        at C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\better-auth\src\api\routes\sign-up.ts:285:5
+        at internalHandler (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\better-call\src\endpoint.ts:507:20)
+        at C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\better-auth\src\api\to-auth-endpoints.ts:119:22
+        at processRequest (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\better-call\src\router.ts:233:22)
+        at handler (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\better-call\src\router.ts:275:16)
+        at C:\Users\HP\Desktop\vessify-intern-assignment\backend\src\app.ts:110:17
+        at dispatch (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\hono\dist\compose.js:22:17)
+        at cors2 (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\hono\dist\middleware\cors\index.js:79:5)
+        at dispatch (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\hono\dist\compose.js:22:17)
+        at logger2 (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\hono\dist\middleware\logger\index.js:38:5)
+        at dispatch (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\hono\dist\compose.js:22:17)
+        at C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\hono\dist\hono-base.js:301:25
+        at Server.<anonymous> (C:\Users\HP\Desktop\vessify-intern-assignment\backend\tests\auth.test.ts:35:22) {
+      code: 'P2022',
+      meta: { modelName: 'Account', column: 'accounts.scope' },
+      clientVersion: '6.19.2'
+    }
+
+    [0m [90m 108 |[39m app[33m.[39mall([32m"/api/auth/*"[39m[33m,[39m [36masync[39m (c) [33m=>[39m {
+     [90m 109 |[39m   [36mtry[39m {
+    [31m[1m>[22m[39m[90m 110 |[39m     [36mconst[39m res [33m=[39m [36mawait[39m auth[33m.[39mhandler(c[33m.[39mreq[33m.[39mraw)[33m;[39m
+     [90m     |[39m                 [31m[1m^[22m[39m
+     [90m 111 |[39m     [36mreturn[39m res[33m;[39m
+     [90m 112 |[39m   } [36mcatch[39m (error) {
+     [90m 113 |[39m     [36mreturn[39m c[33m.[39mjson({ error[33m:[39m [32m"Authentication error"[39m[33m,[39m details[33m:[39m [33mString[39m(error) }[33m,[39m [35m500[39m)[33m;[39m[0m
+
+      at processRequest (../node_modules/better-call/src/router.ts:260:12)
+      at handler (../node_modules/better-call/src/router.ts:275:16)
+      at src/app.ts:110:17
+      at dispatch (../node_modules/hono/dist/compose.js:22:17)
+      at cors2 (../node_modules/hono/dist/middleware/cors/index.js:79:5)
+      at dispatch (../node_modules/hono/dist/compose.js:22:17)
+      at logger2 (../node_modules/hono/dist/middleware/logger/index.js:38:5)
+      at dispatch (../node_modules/hono/dist/compose.js:22:17)
+      at ../node_modules/hono/dist/hono-base.js:301:25
+      at Server.<anonymous> (tests/auth.test.ts:35:22)
+
+  console.log
+    --> POST /api/auth/sign-up/email [31m500[0m 2s
+
+      at log (../node_modules/hono/dist/middleware/logger/index.js:30:3)
+
+  console.log
+    <-- POST /api/auth/sign-in/email
+
+      at log (../node_modules/hono/dist/middleware/logger/index.js:30:3)
+
+  console.log
+    prisma:query SELECT "public"."users"."id", "public"."users"."email", "public"."users"."emailVerified", "public"."users"."name", "public"."users"."image", "public"."users"."createdAt", "public"."users"."updatedAt" FROM "public"."users" WHERE "public"."users"."email" = $1 LIMIT $2 OFFSET $3
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    prisma:query SELECT "public"."accounts"."id", "public"."accounts"."userId", "public"."accounts"."accountId", "public"."accounts"."providerId", "public"."accounts"."accessToken", "public"."accounts"."refreshToken", "public"."accounts"."idToken", "public"."accounts"."scope", "public"."accounts"."password", "public"."accounts"."createdAt", "public"."accounts"."updatedAt" FROM "public"."accounts" WHERE "public"."accounts"."userId" = $1 ORDER BY "public"."accounts"."id" ASC LIMIT $2 OFFSET $3
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    prisma:error 
+    Invalid `prisma.account.findMany()` invocation:
+    
+    
+    The column `accounts.scope` does not exist in the current database.
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.error
+    [2m2026-03-02T00:28:10.244Z[0m [31mERROR[0m [1m[Better Auth]:[0m Failed to query fallback join for model account: {
+      where: [
+        {
+          operator: 'eq',
+          connector: 'AND',
+          field: 'userId',
+          value: 'ibZkPF5HjcYOCe7LrYG0rqnZMx8CkZrc'
+        }
+      ],
+      limit: 100
+    }
+
+    [0m [90m 108 |[39m app[33m.[39mall([32m"/api/auth/*"[39m[33m,[39m [36masync[39m (c) [33m=>[39m {
+     [90m 109 |[39m   [36mtry[39m {
+    [31m[1m>[22m[39m[90m 110 |[39m     [36mconst[39m res [33m=[39m [36mawait[39m auth[33m.[39mhandler(c[33m.[39mreq[33m.[39mraw)[33m;[39m
+     [90m     |[39m                 [31m[1m^[22m[39m
+     [90m 111 |[39m     [36mreturn[39m res[33m;[39m
+     [90m 112 |[39m   } [36mcatch[39m (error) {
+     [90m 113 |[39m     [36mreturn[39m c[33m.[39mjson({ error[33m:[39m [32m"Authentication error"[39m[33m,[39m details[33m:[39m [33mString[39m(error) }[33m,[39m [35m500[39m)[33m;[39m[0m
+
+      at LogFunc (../node_modules/@better-auth/core/src/env/logger.ts:117:13)
+      at Object.error (../node_modules/@better-auth/core/src/env/logger.ts:133:5)
+      at handleFallbackJoin (../node_modules/@better-auth/core/src/db/adapter/factory.ts:772:12)
+      at ../node_modules/@better-auth/core/src/db/adapter/factory.ts:424:22
+      at transformOutput (../node_modules/@better-auth/core/src/db/adapter/factory.ts:418:22)
+      at Object.findOne (../node_modules/@better-auth/core/src/db/adapter/factory.ts:1072:20)
+      at Object.findUserByEmail (../node_modules/better-auth/src/db/internal-adapter.ts:822:19)
+      at ../node_modules/better-auth/src/api/routes/sign-in.ts:461:17
+      at internalHandler (../node_modules/better-call/src/endpoint.ts:507:20)
+      at ../node_modules/better-auth/src/api/to-auth-endpoints.ts:119:22
+      at processRequest (../node_modules/better-call/src/router.ts:233:22)
+      at handler (../node_modules/better-call/src/router.ts:275:16)
+      at src/app.ts:110:17
+      at dispatch (../node_modules/hono/dist/compose.js:22:17)
+      at cors2 (../node_modules/hono/dist/middleware/cors/index.js:79:5)
+      at dispatch (../node_modules/hono/dist/compose.js:22:17)
+      at logger2 (../node_modules/hono/dist/middleware/logger/index.js:38:5)
+      at dispatch (../node_modules/hono/dist/compose.js:22:17)
+      at ../node_modules/hono/dist/hono-base.js:301:25
+      at Server.<anonymous> (tests/auth.test.ts:35:22)
+
+  console.error
+    PrismaClientKnownRequestError: 
+    Invalid `prisma.account.findMany()` invocation:
+    
+    
+    The column `accounts.scope` does not exist in the current database.
+        at ei.handleRequestError (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\@prisma\client\src\runtime\RequestHandler.ts:228:13)
+        at ei.handleAndLogRequestError (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+        at ei.request (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+        at a (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+        at Object.findMany (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\better-auth\src\adapters\prisma-adapter\prisma-adapter.ts:410:21)
+        at handleFallbackJoin (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\@better-auth\core\src\db\adapter\factory.ts:765:15)
+        at C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\@better-auth\core\src\db\adapter\factory.ts:424:22
+        at transformOutput (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\@better-auth\core\src\db\adapter\factory.ts:418:22)
+        at Object.findOne (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\@better-auth\core\src\db\adapter\factory.ts:1072:20)
+        at Object.findUserByEmail (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\better-auth\src\db\internal-adapter.ts:822:19)
+        at C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\better-auth\src\api\routes\sign-in.ts:461:17
+        at internalHandler (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\better-call\src\endpoint.ts:507:20)
+        at C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\better-auth\src\api\to-auth-endpoints.ts:119:22
+        at processRequest (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\better-call\src\router.ts:233:22)
+        at handler (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\better-call\src\router.ts:275:16)
+        at C:\Users\HP\Desktop\vessify-intern-assignment\backend\src\app.ts:110:17
+        at dispatch (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\hono\dist\compose.js:22:17)
+        at cors2 (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\hono\dist\middleware\cors\index.js:79:5)
+        at dispatch (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\hono\dist\compose.js:22:17)
+        at logger2 (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\hono\dist\middleware\logger\index.js:38:5)
+        at dispatch (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\hono\dist\compose.js:22:17)
+        at C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\hono\dist\hono-base.js:301:25
+        at Server.<anonymous> (C:\Users\HP\Desktop\vessify-intern-assignment\backend\tests\auth.test.ts:35:22) {
+      code: 'P2022',
+      meta: { modelName: 'Account', column: 'accounts.scope' },
+      clientVersion: '6.19.2'
+    }
+
+    [0m [90m 108 |[39m app[33m.[39mall([32m"/api/auth/*"[39m[33m,[39m [36masync[39m (c) [33m=>[39m {
+     [90m 109 |[39m   [36mtry[39m {
+    [31m[1m>[22m[39m[90m 110 |[39m     [36mconst[39m res [33m=[39m [36mawait[39m auth[33m.[39mhandler(c[33m.[39mreq[33m.[39mraw)[33m;[39m
+     [90m     |[39m                 [31m[1m^[22m[39m
+     [90m 111 |[39m     [36mreturn[39m res[33m;[39m
+     [90m 112 |[39m   } [36mcatch[39m (error) {
+     [90m 113 |[39m     [36mreturn[39m c[33m.[39mjson({ error[33m:[39m [32m"Authentication error"[39m[33m,[39m details[33m:[39m [33mString[39m(error) }[33m,[39m [35m500[39m)[33m;[39m[0m
+
+      at handleFallbackJoin (../node_modules/@better-auth/core/src/db/adapter/factory.ts:776:13)
+      at ../node_modules/@better-auth/core/src/db/adapter/factory.ts:424:22
+      at transformOutput (../node_modules/@better-auth/core/src/db/adapter/factory.ts:418:22)
+      at Object.findOne (../node_modules/@better-auth/core/src/db/adapter/factory.ts:1072:20)
+      at Object.findUserByEmail (../node_modules/better-auth/src/db/internal-adapter.ts:822:19)
+      at ../node_modules/better-auth/src/api/routes/sign-in.ts:461:17
+      at internalHandler (../node_modules/better-call/src/endpoint.ts:507:20)
+      at ../node_modules/better-auth/src/api/to-auth-endpoints.ts:119:22
+      at processRequest (../node_modules/better-call/src/router.ts:233:22)
+      at handler (../node_modules/better-call/src/router.ts:275:16)
+      at src/app.ts:110:17
+      at dispatch (../node_modules/hono/dist/compose.js:22:17)
+      at cors2 (../node_modules/hono/dist/middleware/cors/index.js:79:5)
+      at dispatch (../node_modules/hono/dist/compose.js:22:17)
+      at logger2 (../node_modules/hono/dist/middleware/logger/index.js:38:5)
+      at dispatch (../node_modules/hono/dist/compose.js:22:17)
+      at ../node_modules/hono/dist/hono-base.js:301:25
+      at Server.<anonymous> (tests/auth.test.ts:35:22)
+
+  console.error
+    [2m2026-03-02T00:28:10.300Z[0m [31mERROR[0m [1m[Better Auth]:[0m 
+    Invalid `prisma.account.findMany()` invocation:
+    
+    
+    The column `accounts.scope` does not exist in the current database.
+
+    [0m [90m 108 |[39m app[33m.[39mall([32m"/api/auth/*"[39m[33m,[39m [36masync[39m (c) [33m=>[39m {
+     [90m 109 |[39m   [36mtry[39m {
+    [31m[1m>[22m[39m[90m 110 |[39m     [36mconst[39m res [33m=[39m [36mawait[39m auth[33m.[39mhandler(c[33m.[39mreq[33m.[39mraw)[33m;[39m
+     [90m     |[39m                 [31m[1m^[22m[39m
+     [90m 111 |[39m     [36mreturn[39m res[33m;[39m
+     [90m 112 |[39m   } [36mcatch[39m (error) {
+     [90m 113 |[39m     [36mreturn[39m c[33m.[39mjson({ error[33m:[39m [32m"Authentication error"[39m[33m,[39m details[33m:[39m [33mString[39m(error) }[33m,[39m [35m500[39m)[33m;[39m[0m
+
+      at LogFunc (../node_modules/@better-auth/core/src/env/logger.ts:117:13)
+      at Object.error (../node_modules/@better-auth/core/src/env/logger.ts:133:5)
+      at Object.onError (../node_modules/better-auth/src/api/index.ts:348:19)
+      at processRequest (../node_modules/better-call/src/router.ts:238:41)
+      at handler (../node_modules/better-call/src/router.ts:275:16)
+      at src/app.ts:110:17
+      at dispatch (../node_modules/hono/dist/compose.js:22:17)
+      at cors2 (../node_modules/hono/dist/middleware/cors/index.js:79:5)
+      at dispatch (../node_modules/hono/dist/compose.js:22:17)
+      at logger2 (../node_modules/hono/dist/middleware/logger/index.js:38:5)
+      at dispatch (../node_modules/hono/dist/compose.js:22:17)
+      at ../node_modules/hono/dist/hono-base.js:301:25
+      at Server.<anonymous> (tests/auth.test.ts:35:22)
+
+  console.error
+    # SERVER_ERROR:  PrismaClientKnownRequestError: 
+    Invalid `prisma.account.findMany()` invocation:
+    
+    
+    The column `accounts.scope` does not exist in the current database.
+        at ei.handleRequestError (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\@prisma\client\src\runtime\RequestHandler.ts:228:13)
+        at ei.handleAndLogRequestError (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+        at ei.request (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+        at a (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+        at Object.findMany (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\better-auth\src\adapters\prisma-adapter\prisma-adapter.ts:410:21)
+        at handleFallbackJoin (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\@better-auth\core\src\db\adapter\factory.ts:765:15)
+        at C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\@better-auth\core\src\db\adapter\factory.ts:424:22
+        at transformOutput (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\@better-auth\core\src\db\adapter\factory.ts:418:22)
+        at Object.findOne (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\@better-auth\core\src\db\adapter\factory.ts:1072:20)
+        at Object.findUserByEmail (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\better-auth\src\db\internal-adapter.ts:822:19)
+        at C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\better-auth\src\api\routes\sign-in.ts:461:17
+        at internalHandler (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\better-call\src\endpoint.ts:507:20)
+        at C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\better-auth\src\api\to-auth-endpoints.ts:119:22
+        at processRequest (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\better-call\src\router.ts:233:22)
+        at handler (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\better-call\src\router.ts:275:16)
+        at C:\Users\HP\Desktop\vessify-intern-assignment\backend\src\app.ts:110:17
+        at dispatch (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\hono\dist\compose.js:22:17)
+        at cors2 (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\hono\dist\middleware\cors\index.js:79:5)
+        at dispatch (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\hono\dist\compose.js:22:17)
+        at logger2 (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\hono\dist\middleware\logger\index.js:38:5)
+        at dispatch (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\hono\dist\compose.js:22:17)
+        at C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\hono\dist\hono-base.js:301:25
+        at Server.<anonymous> (C:\Users\HP\Desktop\vessify-intern-assignment\backend\tests\auth.test.ts:35:22) {
+      code: 'P2022',
+      meta: { modelName: 'Account', column: 'accounts.scope' },
+      clientVersion: '6.19.2'
+    }
+
+    [0m [90m 108 |[39m app[33m.[39mall([32m"/api/auth/*"[39m[33m,[39m [36masync[39m (c) [33m=>[39m {
+     [90m 109 |[39m   [36mtry[39m {
+    [31m[1m>[22m[39m[90m 110 |[39m     [36mconst[39m res [33m=[39m [36mawait[39m auth[33m.[39mhandler(c[33m.[39mreq[33m.[39mraw)[33m;[39m
+     [90m     |[39m                 [31m[1m^[22m[39m
+     [90m 111 |[39m     [36mreturn[39m res[33m;[39m
+     [90m 112 |[39m   } [36mcatch[39m (error) {
+     [90m 113 |[39m     [36mreturn[39m c[33m.[39mjson({ error[33m:[39m [32m"Authentication error"[39m[33m,[39m details[33m:[39m [33mString[39m(error) }[33m,[39m [35m500[39m)[33m;[39m[0m
+
+      at processRequest (../node_modules/better-call/src/router.ts:260:12)
+      at handler (../node_modules/better-call/src/router.ts:275:16)
+      at src/app.ts:110:17
+      at dispatch (../node_modules/hono/dist/compose.js:22:17)
+      at cors2 (../node_modules/hono/dist/middleware/cors/index.js:79:5)
+      at dispatch (../node_modules/hono/dist/compose.js:22:17)
+      at logger2 (../node_modules/hono/dist/middleware/logger/index.js:38:5)
+      at dispatch (../node_modules/hono/dist/compose.js:22:17)
+      at ../node_modules/hono/dist/hono-base.js:301:25
+      at Server.<anonymous> (tests/auth.test.ts:35:22)
+
+  console.log
+    --> POST /api/auth/sign-in/email [31m500[0m 146ms
+
+      at log (../node_modules/hono/dist/middleware/logger/index.js:30:3)
+
+  console.log
+    <-- POST /api/auth/sign-in/email
+
+      at log (../node_modules/hono/dist/middleware/logger/index.js:30:3)
+
+  console.log
+    prisma:query SELECT "public"."users"."id", "public"."users"."email", "public"."users"."emailVerified", "public"."users"."name", "public"."users"."image", "public"."users"."createdAt", "public"."users"."updatedAt" FROM "public"."users" WHERE "public"."users"."email" = $1 LIMIT $2 OFFSET $3
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    prisma:query SELECT "public"."accounts"."id", "public"."accounts"."userId", "public"."accounts"."accountId", "public"."accounts"."providerId", "public"."accounts"."accessToken", "public"."accounts"."refreshToken", "public"."accounts"."idToken", "public"."accounts"."scope", "public"."accounts"."password", "public"."accounts"."createdAt", "public"."accounts"."updatedAt" FROM "public"."accounts" WHERE "public"."accounts"."userId" = $1 ORDER BY "public"."accounts"."id" ASC LIMIT $2 OFFSET $3
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.log
+    prisma:error 
+    Invalid `prisma.account.findMany()` invocation:
+    
+    
+    The column `accounts.scope` does not exist in the current database.
+
+      at Object.zc (../node_modules/@prisma/internals/src/logger.ts:13:11)
+
+  console.error
+    [2m2026-03-02T00:28:10.378Z[0m [31mERROR[0m [1m[Better Auth]:[0m Failed to query fallback join for model account: {
+      where: [
+        {
+          operator: 'eq',
+          connector: 'AND',
+          field: 'userId',
+          value: 'ibZkPF5HjcYOCe7LrYG0rqnZMx8CkZrc'
+        }
+      ],
+      limit: 100
+    }
+
+    [0m [90m 108 |[39m app[33m.[39mall([32m"/api/auth/*"[39m[33m,[39m [36masync[39m (c) [33m=>[39m {
+     [90m 109 |[39m   [36mtry[39m {
+    [31m[1m>[22m[39m[90m 110 |[39m     [36mconst[39m res [33m=[39m [36mawait[39m auth[33m.[39mhandler(c[33m.[39mreq[33m.[39mraw)[33m;[39m
+     [90m     |[39m                 [31m[1m^[22m[39m
+     [90m 111 |[39m     [36mreturn[39m res[33m;[39m
+     [90m 112 |[39m   } [36mcatch[39m (error) {
+     [90m 113 |[39m     [36mreturn[39m c[33m.[39mjson({ error[33m:[39m [32m"Authentication error"[39m[33m,[39m details[33m:[39m [33mString[39m(error) }[33m,[39m [35m500[39m)[33m;[39m[0m
+
+      at LogFunc (../node_modules/@better-auth/core/src/env/logger.ts:117:13)
+      at Object.error (../node_modules/@better-auth/core/src/env/logger.ts:133:5)
+      at handleFallbackJoin (../node_modules/@better-auth/core/src/db/adapter/factory.ts:772:12)
+      at ../node_modules/@better-auth/core/src/db/adapter/factory.ts:424:22
+      at transformOutput (../node_modules/@better-auth/core/src/db/adapter/factory.ts:418:22)
+      at Object.findOne (../node_modules/@better-auth/core/src/db/adapter/factory.ts:1072:20)
+      at Object.findUserByEmail (../node_modules/better-auth/src/db/internal-adapter.ts:822:19)
+      at ../node_modules/better-auth/src/api/routes/sign-in.ts:461:17
+      at internalHandler (../node_modules/better-call/src/endpoint.ts:507:20)
+      at ../node_modules/better-auth/src/api/to-auth-endpoints.ts:119:22
+      at processRequest (../node_modules/better-call/src/router.ts:233:22)
+      at handler (../node_modules/better-call/src/router.ts:275:16)
+      at src/app.ts:110:17
+      at dispatch (../node_modules/hono/dist/compose.js:22:17)
+      at cors2 (../node_modules/hono/dist/middleware/cors/index.js:79:5)
+      at dispatch (../node_modules/hono/dist/compose.js:22:17)
+      at logger2 (../node_modules/hono/dist/middleware/logger/index.js:38:5)
+      at dispatch (../node_modules/hono/dist/compose.js:22:17)
+      at ../node_modules/hono/dist/hono-base.js:301:25
+      at Server.<anonymous> (tests/auth.test.ts:35:22)
+
+  console.error
+    PrismaClientKnownRequestError: 
+    Invalid `prisma.account.findMany()` invocation:
+    
+    
+    The column `accounts.scope` does not exist in the current database.
+        at ei.handleRequestError (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\@prisma\client\src\runtime\RequestHandler.ts:228:13)
+        at ei.handleAndLogRequestError (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+        at ei.request (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+        at a (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+        at Object.findMany (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\better-auth\src\adapters\prisma-adapter\prisma-adapter.ts:410:21)
+        at handleFallbackJoin (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\@better-auth\core\src\db\adapter\factory.ts:765:15)
+        at C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\@better-auth\core\src\db\adapter\factory.ts:424:22
+        at transformOutput (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\@better-auth\core\src\db\adapter\factory.ts:418:22)
+        at Object.findOne (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\@better-auth\core\src\db\adapter\factory.ts:1072:20)
+        at Object.findUserByEmail (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\better-auth\src\db\internal-adapter.ts:822:19)
+        at C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\better-auth\src\api\routes\sign-in.ts:461:17
+        at internalHandler (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\better-call\src\endpoint.ts:507:20)
+        at C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\better-auth\src\api\to-auth-endpoints.ts:119:22
+        at processRequest (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\better-call\src\router.ts:233:22)
+        at handler (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\better-call\src\router.ts:275:16)
+        at C:\Users\HP\Desktop\vessify-intern-assignment\backend\src\app.ts:110:17
+        at dispatch (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\hono\dist\compose.js:22:17)
+        at cors2 (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\hono\dist\middleware\cors\index.js:79:5)
+        at dispatch (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\hono\dist\compose.js:22:17)
+        at logger2 (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\hono\dist\middleware\logger\index.js:38:5)
+        at dispatch (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\hono\dist\compose.js:22:17)
+        at C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\hono\dist\hono-base.js:301:25
+        at Server.<anonymous> (C:\Users\HP\Desktop\vessify-intern-assignment\backend\tests\auth.test.ts:35:22) {
+      code: 'P2022',
+      meta: { modelName: 'Account', column: 'accounts.scope' },
+      clientVersion: '6.19.2'
+    }
+
+    [0m [90m 108 |[39m app[33m.[39mall([32m"/api/auth/*"[39m[33m,[39m [36masync[39m (c) [33m=>[39m {
+     [90m 109 |[39m   [36mtry[39m {
+    [31m[1m>[22m[39m[90m 110 |[39m     [36mconst[39m res [33m=[39m [36mawait[39m auth[33m.[39mhandler(c[33m.[39mreq[33m.[39mraw)[33m;[39m
+     [90m     |[39m                 [31m[1m^[22m[39m
+     [90m 111 |[39m     [36mreturn[39m res[33m;[39m
+     [90m 112 |[39m   } [36mcatch[39m (error) {
+     [90m 113 |[39m     [36mreturn[39m c[33m.[39mjson({ error[33m:[39m [32m"Authentication error"[39m[33m,[39m details[33m:[39m [33mString[39m(error) }[33m,[39m [35m500[39m)[33m;[39m[0m
+
+      at handleFallbackJoin (../node_modules/@better-auth/core/src/db/adapter/factory.ts:776:13)
+      at ../node_modules/@better-auth/core/src/db/adapter/factory.ts:424:22
+      at transformOutput (../node_modules/@better-auth/core/src/db/adapter/factory.ts:418:22)
+      at Object.findOne (../node_modules/@better-auth/core/src/db/adapter/factory.ts:1072:20)
+      at Object.findUserByEmail (../node_modules/better-auth/src/db/internal-adapter.ts:822:19)
+      at ../node_modules/better-auth/src/api/routes/sign-in.ts:461:17
+      at internalHandler (../node_modules/better-call/src/endpoint.ts:507:20)
+      at ../node_modules/better-auth/src/api/to-auth-endpoints.ts:119:22
+      at processRequest (../node_modules/better-call/src/router.ts:233:22)
+      at handler (../node_modules/better-call/src/router.ts:275:16)
+      at src/app.ts:110:17
+      at dispatch (../node_modules/hono/dist/compose.js:22:17)
+      at cors2 (../node_modules/hono/dist/middleware/cors/index.js:79:5)
+      at dispatch (../node_modules/hono/dist/compose.js:22:17)
+      at logger2 (../node_modules/hono/dist/middleware/logger/index.js:38:5)
+      at dispatch (../node_modules/hono/dist/compose.js:22:17)
+      at ../node_modules/hono/dist/hono-base.js:301:25
+      at Server.<anonymous> (tests/auth.test.ts:35:22)
+
+  console.error
+    [2m2026-03-02T00:28:10.409Z[0m [31mERROR[0m [1m[Better Auth]:[0m 
+    Invalid `prisma.account.findMany()` invocation:
+    
+    
+    The column `accounts.scope` does not exist in the current database.
+
+    [0m [90m 108 |[39m app[33m.[39mall([32m"/api/auth/*"[39m[33m,[39m [36masync[39m (c) [33m=>[39m {
+     [90m 109 |[39m   [36mtry[39m {
+    [31m[1m>[22m[39m[90m 110 |[39m     [36mconst[39m res [33m=[39m [36mawait[39m auth[33m.[39mhandler(c[33m.[39mreq[33m.[39mraw)[33m;[39m
+     [90m     |[39m                 [31m[1m^[22m[39m
+     [90m 111 |[39m     [36mreturn[39m res[33m;[39m
+     [90m 112 |[39m   } [36mcatch[39m (error) {
+     [90m 113 |[39m     [36mreturn[39m c[33m.[39mjson({ error[33m:[39m [32m"Authentication error"[39m[33m,[39m details[33m:[39m [33mString[39m(error) }[33m,[39m [35m500[39m)[33m;[39m[0m
+
+      at LogFunc (../node_modules/@better-auth/core/src/env/logger.ts:117:13)
+      at Object.error (../node_modules/@better-auth/core/src/env/logger.ts:133:5)
+      at Object.onError (../node_modules/better-auth/src/api/index.ts:348:19)
+      at processRequest (../node_modules/better-call/src/router.ts:238:41)
+      at handler (../node_modules/better-call/src/router.ts:275:16)
+      at src/app.ts:110:17
+      at dispatch (../node_modules/hono/dist/compose.js:22:17)
+      at cors2 (../node_modules/hono/dist/middleware/cors/index.js:79:5)
+      at dispatch (../node_modules/hono/dist/compose.js:22:17)
+      at logger2 (../node_modules/hono/dist/middleware/logger/index.js:38:5)
+      at dispatch (../node_modules/hono/dist/compose.js:22:17)
+      at ../node_modules/hono/dist/hono-base.js:301:25
+      at Server.<anonymous> (tests/auth.test.ts:35:22)
+
+  console.error
+    # SERVER_ERROR:  PrismaClientKnownRequestError: 
+    Invalid `prisma.account.findMany()` invocation:
+    
+    
+    The column `accounts.scope` does not exist in the current database.
+        at ei.handleRequestError (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\@prisma\client\src\runtime\RequestHandler.ts:228:13)
+        at ei.handleAndLogRequestError (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\@prisma\client\src\runtime\RequestHandler.ts:174:12)
+        at ei.request (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\@prisma\client\src\runtime\RequestHandler.ts:143:12)
+        at a (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\@prisma\client\src\runtime\getPrismaClient.ts:833:24)
+        at Object.findMany (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\better-auth\src\adapters\prisma-adapter\prisma-adapter.ts:410:21)
+        at handleFallbackJoin (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\@better-auth\core\src\db\adapter\factory.ts:765:15)
+        at C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\@better-auth\core\src\db\adapter\factory.ts:424:22
+        at transformOutput (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\@better-auth\core\src\db\adapter\factory.ts:418:22)
+        at Object.findOne (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\@better-auth\core\src\db\adapter\factory.ts:1072:20)
+        at Object.findUserByEmail (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\better-auth\src\db\internal-adapter.ts:822:19)
+        at C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\better-auth\src\api\routes\sign-in.ts:461:17
+        at internalHandler (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\better-call\src\endpoint.ts:507:20)
+        at C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\better-auth\src\api\to-auth-endpoints.ts:119:22
+        at processRequest (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\better-call\src\router.ts:233:22)
+        at handler (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\better-call\src\router.ts:275:16)
+        at C:\Users\HP\Desktop\vessify-intern-assignment\backend\src\app.ts:110:17
+        at dispatch (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\hono\dist\compose.js:22:17)
+        at cors2 (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\hono\dist\middleware\cors\index.js:79:5)
+        at dispatch (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\hono\dist\compose.js:22:17)
+        at logger2 (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\hono\dist\middleware\logger\index.js:38:5)
+        at dispatch (C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\hono\dist\compose.js:22:17)
+        at C:\Users\HP\Desktop\vessify-intern-assignment\node_modules\hono\dist\hono-base.js:301:25
+        at Server.<anonymous> (C:\Users\HP\Desktop\vessify-intern-assignment\backend\tests\auth.test.ts:35:22) {
+      code: 'P2022',
+      meta: { modelName: 'Account', column: 'accounts.scope' },
+      clientVersion: '6.19.2'
+    }
+
+    [0m [90m 108 |[39m app[33m.[39mall([32m"/api/auth/*"[39m[33m,[39m [36masync[39m (c) [33m=>[39m {
+     [90m 109 |[39m   [36mtry[39m {
+    [31m[1m>[22m[39m[90m 110 |[39m     [36mconst[39m res [33m=[39m [36mawait[39m auth[33m.[39mhandler(c[33m.[39mreq[33m.[39mraw)[33m;[39m
+     [90m     |[39m                 [31m[1m^[22m[39m
+     [90m 111 |[39m     [36mreturn[39m res[33m;[39m
+     [90m 112 |[39m   } [36mcatch[39m (error) {
+     [90m 113 |[39m     [36mreturn[39m c[33m.[39mjson({ error[33m:[39m [32m"Authentication error"[39m[33m,[39m details[33m:[39m [33mString[39m(error) }[33m,[39m [35m500[39m)[33m;[39m[0m
+
+      at processRequest (../node_modules/better-call/src/router.ts:260:12)
+      at handler (../node_modules/better-call/src/router.ts:275:16)
+      at src/app.ts:110:17
+      at dispatch (../node_modules/hono/dist/compose.js:22:17)
+      at cors2 (../node_modules/hono/dist/middleware/cors/index.js:79:5)
+      at dispatch (../node_modules/hono/dist/compose.js:22:17)
+      at logger2 (../node_modules/hono/dist/middleware/logger/index.js:38:5)
+      at dispatch (../node_modules/hono/dist/compose.js:22:17)
+      at ../node_modules/hono/dist/hono-base.js:301:25
+      at Server.<anonymous> (tests/auth.test.ts:35:22)
+
+  console.log
+    --> POST /api/auth/sign-in/email [31m500[0m 81ms
+
+      at log (../node_modules/hono/dist/middleware/logger/index.js:30:3)
+
+  console.log
+    <-- GET /api/transactions?limit=1
+
+      at log (../node_modules/hono/dist/middleware/logger/index.js:30:3)
+
+  console.error
+    ??? Missing or invalid Authorization header
+
+    [0m [90m 24 |[39m
+     [90m 25 |[39m     [36mif[39m ([33m![39mauthHeader [33m||[39m [33m![39mauthHeader[33m.[39mstartsWith([32m"Bearer "[39m)) {
+    [31m[1m>[22m[39m[90m 26 |[39m       console[33m.[39merror([32m"??? Missing or invalid Authorization header"[39m)[33m;[39m
+     [90m    |[39m               [31m[1m^[22m[39m
+     [90m 27 |[39m       [36mreturn[39m c[33m.[39mjson({ error[33m:[39m [32m"Unauthorized: Missing or invalid token"[39m }[33m,[39m [35m401[39m)[33m;[39m
+     [90m 28 |[39m     }
+     [90m 29 |[39m[0m
+
+      at authMiddleware (src/middleware/auth.ts:26:15)
+      at dispatch (../node_modules/hono/dist/compose.js:22:23)
+      at ../node_modules/hono/dist/compose.js:22:46
+      at cors2 (../node_modules/hono/dist/middleware/cors/index.js:79:11)
+      at dispatch (../node_modules/hono/dist/compose.js:22:17)
+      at logger2 (../node_modules/hono/dist/middleware/logger/index.js:38:5)
+      at dispatch (../node_modules/hono/dist/compose.js:22:17)
+      at ../node_modules/hono/dist/hono-base.js:301:25
+      at Server.<anonymous> (tests/auth.test.ts:35:22)
+
+  console.log
+    --> GET /api/transactions?limit=1 [33m401[0m 20ms
+
+      at log (../node_modules/hono/dist/middleware/logger/index.js:30:3)
+

@@ -27,7 +27,11 @@ export async function authMiddleware(c: Context, next: Next) {
       return c.json({ error: "Unauthorized: Missing or invalid token" }, 401);
     }
 
-    const token = authHeader.substring(7); // Remove "Bearer " prefix
+    const token = authHeader.split(/\s+/)[1];
+    if (!token) {
+      console.error("❌ Invalid Authorization header format");
+      return c.json({ error: "Unauthorized: Invalid Authorization header" }, 401);
+    }
     console.log("🔑 Token received, length:", token.length, "prefix:", token.substring(0, 20) + "...");
 
     let session;
@@ -78,30 +82,43 @@ export async function authMiddleware(c: Context, next: Next) {
       const parts = token.split('.');
       if (parts.length === 3) {
         try {
-          const payload = JSON.parse(Buffer.from(parts[1], 'base64url').toString());
+          console.log("🔍 Attempting manual JWT decode...");
+          // Base64URL to JSON
+          const base64Url = parts[1];
+          const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+          const payload = JSON.parse(Buffer.from(base64, 'base64').toString());
+
           if (payload.exp && payload.exp * 1000 < Date.now()) {
-            return c.json({ error: "Unauthorized: Token expired" }, 401);
+            console.error("❌ Manual check: Token expired at", new Date(payload.exp * 1000).toISOString());
+            return c.json({ error: "Unauthorized: Token expired", code: "TOKEN_EXPIRED" }, 401);
           }
-          session = {
-            user: {
-              id: payload.id || payload.sub,
-              email: payload.email,
-              name: payload.name,
-            },
-            session: {
-              expiresAt: payload.exp ? new Date(payload.exp * 1000) : null,
-            },
-          };
-          console.log("✅ Manual JWT verification successful");
+
+          if (!payload.id && !payload.sub) {
+            console.error("❌ Manual check: No user ID found in payload");
+          } else {
+            session = {
+              user: {
+                id: payload.id || payload.sub,
+                email: payload.email,
+                name: payload.name,
+              },
+              session: {
+                expiresAt: payload.exp ? new Date(payload.exp * 1000) : null,
+              },
+            };
+            console.log("✅ Manual JWT decode successful for user:", session.user.email || session.user.id);
+          }
         } catch (jwtError: any) {
-          console.error("❌ JWT decode failed:", jwtError?.message);
+          console.error("❌ Manual JWT decode failed:", jwtError?.message);
         }
+      } else {
+        console.warn("⚠️ Token is not a 3-part JWT, skipping manual decode");
       }
     }
 
     // STEP 4: All methods failed
     if (!session || !session.user) {
-      console.error("❌ All auth methods failed for token:", token.substring(0, 10) + "...");
+      console.error("❌ All auth methods failed for token type:", token.length > 50 ? "JWT-like" : "Opaque");
       return c.json({ error: "Unauthorized: Invalid or expired token" }, 401);
     }
 
@@ -131,7 +148,31 @@ export async function authMiddleware(c: Context, next: Next) {
       },
     });
 
-    // If user doesn't exist, create them (Better Auth validated the session, so trust it)
+    // If not found by ID, try finding by email (ID might have changed in session)
+    if (!user && userEmail) {
+      console.log("🔍 User not found by ID, searching by email:", userEmail);
+      user = await prisma.user.findUnique({
+        where: { email: userEmail },
+        include: {
+          memberships: {
+            include: {
+              organization: true,
+            },
+            orderBy: {
+              createdAt: "asc",
+            },
+            take: 1,
+          },
+        },
+      });
+
+      if (user) {
+        console.log("✅ User found by email, updating userId from", userId, "to", user.id);
+        userId = user.id; // Correct the ID for subsequent logic
+      }
+    }
+
+    // If user doesn't exist at all, create them
     if (!user) {
       console.log("⚠️ User not found in database, creating from session...");
       console.log("📋 User data to create:", { userId, userEmail, userName });
@@ -139,11 +180,20 @@ export async function authMiddleware(c: Context, next: Next) {
       try {
         // Create user and organization in a single transaction
         const result = await prisma.$transaction(async (tx: any) => {
+          // Double check email uniqueness just before creating
+          if (userEmail) {
+            const existing = await tx.user.findUnique({ where: { email: userEmail } });
+            if (existing) {
+              console.log("✅ User found by email inside transaction, skipping creation");
+              return { user: existing, isNew: false };
+            }
+          }
+
           // Create user
           console.log("📝 Creating user in database...");
           const newUser = await tx.user.create({
             data: {
-              id: userId, // Use the ID from Better Auth session
+              id: userId,
               email: userEmail || `user-${userId}@temp.com`,
               name: userName || null,
               emailVerified: false,
@@ -153,11 +203,12 @@ export async function authMiddleware(c: Context, next: Next) {
 
           // Create organization
           console.log("📝 Creating organization...");
+          const orgId = crypto.randomUUID();
           const organization = await tx.organization.create({
             data: {
-              id: crypto.randomUUID(),
-              name: "Personal",
-              slug: `personal-${userId.substring(0, 8)}-${Date.now()}`,
+              id: orgId,
+              name: `${userName || (userEmail ? userEmail.split('@')[0] : 'User')}'s Organization`,
+              slug: orgId.toLowerCase(),
             },
           });
 
@@ -168,7 +219,7 @@ export async function authMiddleware(c: Context, next: Next) {
           await tx.organizationMember.create({
             data: {
               id: crypto.randomUUID(),
-              userId: userId,
+              userId: newUser.id,
               organizationId: organization.id,
               role: "owner",
             },
@@ -176,13 +227,14 @@ export async function authMiddleware(c: Context, next: Next) {
 
           console.log("✅ Membership created");
 
-          return { user: newUser, organization };
+          return { user: newUser, organization, isNew: true };
         });
 
-        console.log("✅ Created user and organization:", {
-          userId: result.user.id,
-          orgId: result.organization.id
-        });
+        if (userId !== result.user.id) {
+          userId = result.user.id;
+        }
+
+        console.log(`✅ User ${result.isNew ? 'created' : 'verified'}:`, userId);
 
         // Re-fetch user with membership
         user = await prisma.user.findUnique({
@@ -200,41 +252,11 @@ export async function authMiddleware(c: Context, next: Next) {
           },
         });
       } catch (createError: any) {
-        console.error("❌ Failed to create user from session:", {
-          message: createError?.message,
-          code: createError?.code,
-          meta: createError?.meta,
-          stack: createError?.stack?.substring(0, 300),
-        });
-
-        // If user already exists (race condition), try to fetch again
-        if (createError?.code === "P2002") {
-          console.log("⚠️ User already exists (race condition), fetching...");
-          user = await prisma.user.findUnique({
-            where: { id: userId },
-            include: {
-              memberships: {
-                include: {
-                  organization: true,
-                },
-                orderBy: {
-                  createdAt: "asc",
-                },
-                take: 1,
-              },
-            },
-          });
-        } else {
-          return c.json(
-            {
-              error: "Unauthorized: Failed to initialize user",
-              details: process.env.NODE_ENV === 'development'
-                ? `${createError?.message} (code: ${createError?.code})`
-                : undefined
-            },
-            401
-          );
-        }
+        console.error("❌ Failed to create/initialize user:", createError?.message);
+        return c.json({
+          error: "Unauthorized: Failed to initialize user account",
+          details: process.env.NODE_ENV === 'development' ? createError?.message : undefined
+        }, 401);
       }
     }
 
@@ -289,11 +311,12 @@ export async function authMiddleware(c: Context, next: Next) {
           }
 
           console.log("📝 Creating new organization for user:", txUser.id);
+          const orgId = crypto.randomUUID();
           const organization = await tx.organization.create({
             data: {
-              id: crypto.randomUUID(),
-              name: "Personal",
-              slug: `personal-${txUser.id.substring(0, 8)}-${Date.now()}`,
+              id: orgId,
+              name: `${userName || userEmail.split('@')[0]}'s Organization`,
+              slug: orgId.toLowerCase(),
             },
           });
 
