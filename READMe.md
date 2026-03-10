@@ -1,45 +1,41 @@
-# Vessify Internship Assignment - Transaction Extractor
+# Vessify - Universal Transaction Parser
 
 A robust full-stack application for parsing and managing financial transactions from bank statements. Built with modern web technologies, this project demonstrates a secure, high-performance architecture for data extraction and financial tracking.
+
+## 🔗 Live Demo
+- **Frontend:** [vessify-frontend.vercel.app](https://vessify-frontend.vercel.app/)
+- **Backend:** [vessify-backend-9oi4.onrender.com](https://vessify-backend-9oi4.onrender.com)
+
+## ✨ Features
+- ✅ **Universal Parser:** Handles ANY transaction format with a robust regex-based engine.
+- ✅ **Smart Pattern Support:** 40+ built-in patterns for UPI, Credit Cards, ATM, Salary, and International transactions.
+- ✅ **Organization Isolation:** Multi-tenancy support with secure workspace separation.
+- ✅ **Smart Validation:** Advanced amount validation and confidence scoring for high accuracy.
+- ✅ **Pagination:** Cursor-based efficient loading of large transaction histories.
+- ✅ **Secure Auth:** Full authentication and authorization powered by Better Auth.
+
+## 🧪 Test With:
+- UPI payments (PhonePe, GPay, PayTM)
+- Credit card statements
+- ATM withdrawals
+- Salary credits
+- International transactions
 
 ## 🚀 Tech Stack
 
 ### Frontend
-- **Framework:** [Next.js 15](https://nextjs.org/) (App Router)
+- **Framework:** [Next.js 15](https://nextjs.org/)
 - **Library:** [React 19](https://react.dev/)
 - **Styling:** [Tailwind CSS 4](https://tailwindcss.com/)
 - **UI Components:** [Shadcn UI](https://ui.shadcn.com/)
-- **Forms:** React Hook Form + Zod
-- **Icons:** Lucide React
 
 ### Backend
-- **Framework:** [Hono](https://hono.dev/) (Lightweight, Edge-ready)
+- **Framework:** [Hono](https://hono.dev/)
 - **Runtime:** Node.js (with TSX)
 - **Database Helper:** [Prisma ORM](https://www.prisma.io/)
 - **Database:** PostgreSQL
 - **Authentication:** [Better Auth](https://better-auth.com/)
 - **Testing:** Jest + Supertest
-
-## ✨ Features Implemented
-
-1.  **Secure Authentication**
-    *   Email/Password Registration & Login
-    *   JWT-based session management
-    *   Secure token handling (HTTP-only cookies & headers)
-    *   Organization/Workspace support (via Better Auth plugins)
-
-2.  **Transaction Parsing Engine**
-    *   Extracts structured data from raw bank statement text
-    *   Regex-based parsing for Dates, Descriptions, Amounts, and Balances
-    *   Robust error handling for malformed input
-
-3.  **Interactive Dashboard**
-    *   Real-time transaction extraction
-    *   Cursor-based pagination (Infinite scroll/Load more)
-    *   Responsive data table with currency formatting
-    *   Transaction history view
-
-## 🛠️ Setup Instructions
 
 ### Prerequisites
 - Node.js (v18+)
