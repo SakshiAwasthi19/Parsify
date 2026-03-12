@@ -59,48 +59,8 @@ app.get("/health", (c) =>
   })
 );
 
-app.get("/debug/tables", async (c) => {
-  try {
-    const tables = await prisma.$queryRaw`
-      SELECT table_name 
-      FROM information_schema.tables 
-      WHERE table_schema = 'public'
-      ORDER BY table_name
-    `;
-    const sessionCount = await prisma.session.count();
-    const userCount = await prisma.user.count();
-    return c.json({ tables, sessionCount, userCount });
-  } catch (e: any) {
-    return c.json({ error: e.message });
-  }
-});
-
-app.get("/debug/db", async (c) => {
-  const dbUrl = process.env.DATABASE_URL || "NOT SET";
-  const masked = dbUrl.substring(0, 40) + "...";
-  return c.json({ databaseUrl: masked });
-});
-
-
-
-app.get("/debug/sessions", async (c) => {
-  try {
-    const sessions = await prisma.session.findMany({
-      take: 5,
-      orderBy: { createdAt: "desc" },
-      select: {
-        id: true,
-        token: true,
-        userId: true,
-        expiresAt: true,
-        createdAt: true
-      }
-    });
-    return c.json({ count: sessions.length, sessions });
-  } catch (e: any) {
-    return c.json({ error: e.message });
-  }
-});
+// Debug routes removed for production security
+// Use Render dashboard logs for debugging
 
 
 
