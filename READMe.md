@@ -2,12 +2,12 @@
 
 Universal transaction parser built as a full-stack monorepo. Users can sign up, paste raw bank statement text, and store/retrieve parsed transactions with org-level isolation.
 
-##🔗 Live URLs
+## 🔗 Live URLs
 
 - Frontend: [https://vessify-frontend.vercel.app](https://vessify-frontend.vercel.app)
 - Backend: [https://vessify-backend-9o4i.onrender.com](https://vessify-backend-9o4i.onrender.com)
 
-##🚀 Tech Stack
+## 🚀 Tech Stack
 
 ### Frontend (`frontend`)
 - Next.js 15 (App Router)
@@ -107,7 +107,7 @@ npm run dev:frontend
 
 Open `http://localhost:3000`.
 
-##🔐 Environment Variables
+## 🔐 Environment Variables
 
 ### Backend (`backend/.env`)
 
@@ -123,13 +123,13 @@ Open `http://localhost:3000`.
 
 - `NEXT_PUBLIC_BACKEND_URL` (required): backend origin used by `frontend/src/lib/api.ts`
 
-## API Overview
+## 📡 API Overview
 
 ### Health / Utility
 - `GET /` -> backend status/version
 - `GET /health` -> health response
 
-### 📡 Auth (`/api/auth/*`)
+### Auth (`/api/auth/*`)
 
 - Better Auth core endpoints (for example):
   - `POST /api/auth/sign-up/email`
@@ -178,7 +178,7 @@ Open `http://localhost:3000`.
 - `npm run lint`
 - `npm run type-check`
 
-##📂 Project Structure
+## 📂 Project Structure
 
 ```text
 Parsify/
