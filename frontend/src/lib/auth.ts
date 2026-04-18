@@ -1,6 +1,6 @@
 // frontend/src/lib/auth.ts
 
-const TOKEN_KEY = "vessify_token";
+const TOKEN_KEY = "parsify_token";
 
 // Save token
 export function setToken(token: string) {

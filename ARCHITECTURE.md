@@ -1,5 +1,5 @@
 # Architecture & Design Document
-## Personal Finance Transaction Extractor
+## Parsify: Personal Finance Transaction Extractor
 
 ---
 
@@ -175,7 +175,7 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
@@ -290,9 +290,9 @@ model Transaction {
   organizationId String   // Which org it belongs to
   date           DateTime // Parsed transaction date
   description    String   // Parsed description
-  amount         Decimal  @db.Decimal(10, 2) // Can be negative (debit) or positive (credit)
-  balance        Decimal  @db.Decimal(10, 2) // Balance after transaction
-  rawText        String?  @db.Text // Original text (for debugging)
+  amount         Float   // Can be negative (debit) or positive (credit)
+  balance        Float   // Balance after transaction
+  rawText        String? // Original text (for debugging)
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
 
@@ -349,9 +349,9 @@ model Transaction {
 ### 2.4 Data Types Explained
 
 - `String @id @default(cuid())`: Unique ID (better than auto-increment for security)
-- `Decimal @db.Decimal(10, 2)`: Money (10 digits total, 2 decimal places) - NEVER use Float for money!
-- `DateTime`: PostgreSQL timestamp
-- `@db.Text`: Large text field (for rawText)
+- `Float`: Money (Standard for MongoDB Prisma integration)
+- `DateTime`: MongoDB timestamp
+- `String?`: Optional text field (for rawText)
 - `@unique`: Database-level uniqueness constraint
 - `onDelete: Cascade`: If user is deleted, delete their transactions too
 
@@ -481,7 +481,7 @@ app.post('/api/transactions/extract', async (req) => {
 // DANGEROUS - precision errors!
 amount: Float // 0.1 + 0.2 = 0.30000000000000004
 ```
-**Fix:** Use Decimal type (already in schema).
+**Fix:** While Decimal is better for pure finance, Float is used here for MongoDB compatibility. Ensure rounding is handled in UI/Backend logic.
 
 ---
 

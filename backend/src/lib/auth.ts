@@ -55,8 +55,8 @@ export const auth = betterAuth({
 
     // ⚠️ CRITICAL FIX: Trusted Origins for CORS
     trustedOrigins: [
-        "https://vessify-frontend.vercel.app",
-        "https://vessify-frontend.vercel.app/",
+        "https://parsify-frontend.vercel.app",
+        "https://parsify-frontend.vercel.app/",
         "http://localhost:3000",
         "http://localhost:3001",
         ...(process.env.FRONTEND_URL ? [process.env.FRONTEND_URL] : []),
@@ -66,7 +66,7 @@ export const auth = betterAuth({
     secret: process.env.BETTER_AUTH_SECRET || process.env.AUTH_SECRET,
 
     // Base URL
-    baseURL: process.env.BACKEND_URL || "https://vessify-backend-9o4i.onrender.com",
+    baseURL: process.env.BACKEND_URL || "https://parsify-backend.onrender.com",
 
     // Base Path
     basePath: "/api/auth",

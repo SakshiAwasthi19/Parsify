@@ -4,8 +4,83 @@ Universal transaction parser built as a full-stack monorepo. Users can sign up, 
 
 ## Live URLs
 
-- Frontend: [https://vessify-frontend.vercel.app](https://vessify-frontend.vercel.app)
-- Backend: [https://vessify-backend-9o4i.onrender.com](https://vessify-backend-9o4i.onrender.com)
+- Frontend: [https://parsify-frontend.vercel.app/](https://parsify-frontend.vercel.app/)
+- Backend: [https://parsify-backend.onrender.com](https://parsify-backend.onrender.com)
+
+## Test User Credentials
+
+Use these demo accounts for quick login and testing:
+
+| Role | Email | Password |
+|---|---|---|
+| User 1 | `demo@example.com` | `password123` |
+| User 2 | `test@parsify.com` | `securePass!789` |
+
+## Sample Data for Parsing
+
+Copy-paste any of the following into the transaction parser input:
+
+```text
+You sent Rs. 1250 to merchant@upi on 18-Apr-2026. Avl Bal: Rs. 9340
+```
+
+```text
+HDFC CC: SWIGGY BANGALORE 17/04/26 Rs.850.00 debited. Avl Limit 45000
+```
+
+```text
+ATM Withdrawal Rs. 2000 on 16-APR-2026. Remaining Bal Rs. 15500
+```
+
+```text
+Salary credit of Rs. 52,000 received on 01-Apr-2026. Available balance Rs. 73,420
+```
+
+```text
+NEFT transfer to RENT123 on 05/04/2026 amount Rs.18000. Balance Rs. 24420
+```
+
+## Testing Instructions
+
+### Manual app testing
+
+1. Open [https://parsify-frontend.vercel.app/](https://parsify-frontend.vercel.app/).
+2. Login with one of the test users above (or register a new user).
+3. Paste one sample transaction from this README.
+4. Click **Extract Transaction** and verify a success response.
+5. Confirm parsed records appear in the transactions table.
+6. Test pagination by adding multiple entries and loading more.
+
+### API smoke testing
+
+Backend health:
+
+```bash
+curl https://parsify-backend.onrender.com/health
+```
+
+Backend root:
+
+```bash
+curl https://parsify-backend.onrender.com/
+```
+
+### Local automated tests
+
+```bash
+cd backend
+npm test
+```
+
+## Screenshots
+
+### Test Credentials UI
+
+![Test User Credentials](./assets/parsing.png)
+
+### Dashboard and Transaction Parsing
+
+![Dashboard and Transaction Parsing](./assets/dashboard.png)
 
 ## Tech Stack
 

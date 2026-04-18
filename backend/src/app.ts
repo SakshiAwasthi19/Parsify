@@ -22,7 +22,7 @@ app.use(
   cors({
     origin: (origin) => {
       const allowed = [
-        "https://vessify-frontend.vercel.app",
+        "https://parsify-frontend.vercel.app",
         "http://localhost:3000",
         "http://localhost:3001",
         process.env.FRONTEND_URL,
@@ -45,7 +45,7 @@ app.use(
 // Match both "/" and empty string for maximum reliability
 app.get("/", (c) =>
   c.json({
-    message: "Vessify Backend API",
+    message: "Parsify Backend API",
     status: "running",
     version: VERSION,
     timestamp: new Date().toISOString(),

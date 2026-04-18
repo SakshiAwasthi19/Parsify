@@ -1,5 +1,5 @@
 {
-  "name": "vessify-intern-assignment",
+  "name": "parsify",
   "private": true,
   "workspaces": [
     "backend",

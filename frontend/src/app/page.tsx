@@ -154,7 +154,7 @@ export default function DashboardPage() {
         <div className="mb-8 flex items-center justify-between">
           <div>
             <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-50">
-              Vessify Dashboard
+              Parsify Dashboard
             </h1>
             <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
               Extract and manage your financial transactions

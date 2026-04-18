@@ -56,7 +56,7 @@ export default function DashboardPage() {
 
         <Card>
           <CardHeader>
-            <CardTitle>Welcome to Vessify</CardTitle>
+            <CardTitle>Welcome to Parsify</CardTitle>
             <CardDescription>Your personal finance transaction extractor</CardDescription>
           </CardHeader>
           <CardContent>
