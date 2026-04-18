@@ -1,13 +1,13 @@
-# Parsify - Universal Transaction Parser
+# Parsify
 
 Universal transaction parser built as a full-stack monorepo. Users can sign up, paste raw bank statement text, and store/retrieve parsed transactions with org-level isolation.
 
-## 🔗 Live URLs
+## Live URLs
 
 - Frontend: [https://vessify-frontend.vercel.app](https://vessify-frontend.vercel.app)
 - Backend: [https://vessify-backend-9o4i.onrender.com](https://vessify-backend-9o4i.onrender.com)
 
-## 🚀 Tech Stack
+## Tech Stack
 
 ### Frontend (`frontend`)
 - Next.js 15 (App Router)
@@ -27,29 +27,13 @@ Universal transaction parser built as a full-stack monorepo. Users can sign up, 
 - npm workspaces
 - `concurrently` for running frontend + backend together
 
-## ✨ Features
+## Features
 
-- ✅ Universal Parser : Parse free-form transaction text into structured data
-- ✅ Secure Auth : Auth with Better Auth (`/api/auth/*`)
-- ✅ Organization Isolation : Organization-based multi-tenancy
-- ✅ Middleware : Protected transaction APIs with auth middleware
-- ✅ Pagination : Cursor-style pagination on transaction listing
-- ✅ Smart Pattern Support: 40+ built-in patterns for UPI, Credit Cards, ATM, Salary, and International transactions.
-- ✅ Smart Validation: Advanced amount validation and confidence scoring for high accuracy.
-
-## 🧪 Test With:
-- UPI payments (PhonePe, GPay, PayTM)
-- Credit card statements
-- ATM withdrawals
-- Salary credits
-- International transactions
-
-## 📸 Screenshots
-
-| Dashboard View | Transaction Parsing |
-|:---:|:---:|
-| ![Dashboard View](assets/dashboard.png) | ![Transaction Parsing](assets/parsing.png) |
-
+- Parse free-form transaction text into structured data
+- Auth with Better Auth (`/api/auth/*`)
+- Organization-based multi-tenancy
+- Protected transaction APIs with auth middleware
+- Cursor-style pagination on transaction listing
 
 ## Development Setup
 
@@ -114,64 +98,7 @@ npm run dev:frontend
 
 Open `http://localhost:3000`.
 
-## 🧪 Testing Instructions
-
-### Backend Tests
-The backend uses Jest and Supertest for API and isolation testing.
-
-```bash
-cd backend
-npm test
-```
-
-To run tests with coverage:
-```bash
-npm run test:coverage
-```
-
-### Frontend Tests
-(Add frontend tests if applicable, otherwise mention manual verification)
-Currently, frontend verification is performed manually by logging in and testing the transaction extraction flow.
-
-## 👤 Test User Credentials
-
-For testing purposes, you can use the following credentials or register a new account:
-
-- **Email**: `test@example.com`
-- **Password**: `Password123!`
-
-*Note: If testing on a live deployment, please register a new account as the database may be cleared periodically.*
-
-## 📋 Sample Test Data
-
-Copy and paste these examples into the application to test the parsing functionality:
-
-### 1. Bank Statement (Labeled)
-```text
-Date: 28 Feb 2026
-Description: STARBUCKS COFFEE MUMBAI
-Amount: -420.00
-Balance after transaction: 18,420.50
-```
-
-### 2. Mobile Notification (Compact)
-```text
-Paid ₹1,250.00 to Uber Ride on 10-12-2025. Avl Bal: ₹17,170.50
-```
-
-### 3. Credit Card / Retail
-```text
-Reliance Digital * Mumbai 
-15/01/2026 → ₹45,999.00 debited
-Available Limit → ₹54,000.00
-```
-
-### 4. Salary / Credit
-```text
-Date: 01-Mar-2026 Salary Credit Rs. 85,000.00 Bal 96,200.00
-```
-
-## 🔐 Environment Variables
+## Environment Variables
 
 ### Backend (`backend/.env`)
 
@@ -187,7 +114,7 @@ Date: 01-Mar-2026 Salary Credit Rs. 85,000.00 Bal 96,200.00
 
 - `NEXT_PUBLIC_BACKEND_URL` (required): backend origin used by `frontend/src/lib/api.ts`
 
-## 📡 API Overview
+## API Overview
 
 ### Health / Utility
 - `GET /` -> backend status/version
@@ -242,7 +169,7 @@ Date: 01-Mar-2026 Salary Credit Rs. 85,000.00 Bal 96,200.00
 - `npm run lint`
 - `npm run type-check`
 
-## 📂 Project Structure
+## Project Structure
 
 ```text
 Parsify/
@@ -285,23 +212,22 @@ Parsify/
 
 Service settings (`Root Directory`: `backend`):
 
-- **Build Command**: `npm install && npx prisma generate && npx prisma db push && npm run build`
-- **Start Command**: `npm start` (Runs `tsx src/index.ts`)
-- **Required Environment Variables**:
-  - `DATABASE_URL`: MongoDB production connection string.
-  - `BETTER_AUTH_SECRET`: A 32-character random string for session signing.
-  - `BACKEND_URL`: The public URL of your deployed backend.
-  - `FRONTEND_URL`: The public URL of your deployed frontend (for CORS).
-  - `NODE_ENV`: Set to `production`.
+- Build command: `npm install && npx prisma generate && npx prisma db push && npm run build`
+- Start command: `npm start`
+- Required env:
+  - `DATABASE_URL` (MongoDB production URI)
+  - `BETTER_AUTH_SECRET` (and/or `AUTH_SECRET`)
+  - `BACKEND_URL` (your deployed backend URL)
+  - `FRONTEND_URL` (your deployed frontend URL)
+  - `NODE_ENV=production`
 
 ### Frontend (Vercel)
 
 Project settings:
 
-- **Root Directory**: `frontend`
-- **Build Command**: `next build`
-- **Required Environment Variables**:
-  - `NEXT_PUBLIC_BACKEND_URL`: The public URL of your deployed backend.
+- Root Directory: `frontend`
+- Required env:
+  - `NEXT_PUBLIC_BACKEND_URL=<your backend url>`
 
 ## Notes
 
