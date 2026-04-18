@@ -44,6 +44,15 @@ Universal transaction parser built as a full-stack monorepo. Users can sign up, 
 - Salary credits
 - International transactions
 
+## Screenshots
+
+### Homepage / Dashboard
+![Homepage](assets/dashboard.png)
+
+### Parsing Feature
+![Parsing Feature](assets/parsing.png)
+
+
 ## Development Setup
 
 ### Prerequisites
@@ -107,7 +116,36 @@ npm run dev:frontend
 
 Open `http://localhost:3000`.
 
+## 🧪 Testing Instructions
+
+### Backend Tests
+The backend uses Jest and Supertest for API and isolation testing.
+
+```bash
+cd backend
+npm test
+```
+
+To run tests with coverage:
+```bash
+npm run test:coverage
+```
+
+### Frontend Tests
+(Add frontend tests if applicable, otherwise mention manual verification)
+Currently, frontend verification is performed manually by logging in and testing the transaction extraction flow.
+
+## 👤 Test User Credentials
+
+For testing purposes, you can use the following credentials or register a new account:
+
+- **Email**: `test@example.com`
+- **Password**: `Password123!`
+
+*Note: If testing on a live deployment, please register a new account as the database may be cleared periodically.*
+
 ## 🔐 Environment Variables
+
 
 ### Backend (`backend/.env`)
 
@@ -221,22 +259,23 @@ Parsify/
 
 Service settings (`Root Directory`: `backend`):
 
-- Build command: `npm install && npx prisma generate && npx prisma db push && npm run build`
-- Start command: `npm start`
-- Required env:
-  - `DATABASE_URL` (MongoDB production URI)
-  - `BETTER_AUTH_SECRET` (and/or `AUTH_SECRET`)
-  - `BACKEND_URL` (your deployed backend URL)
-  - `FRONTEND_URL` (your deployed frontend URL)
-  - `NODE_ENV=production`
+- **Build Command**: `npm install && npx prisma generate && npx prisma db push && npm run build`
+- **Start Command**: `npm start` (Runs `tsx src/index.ts`)
+- **Required Environment Variables**:
+  - `DATABASE_URL`: MongoDB production connection string.
+  - `BETTER_AUTH_SECRET`: A 32-character random string for session signing.
+  - `BACKEND_URL`: The public URL of your deployed backend.
+  - `FRONTEND_URL`: The public URL of your deployed frontend (for CORS).
+  - `NODE_ENV`: Set to `production`.
 
 ### Frontend (Vercel)
 
 Project settings:
 
-- Root Directory: `frontend`
-- Required env:
-  - `NEXT_PUBLIC_BACKEND_URL=<your backend url>`
+- **Root Directory**: `frontend`
+- **Build Command**: `next build`
+- **Required Environment Variables**:
+  - `NEXT_PUBLIC_BACKEND_URL`: The public URL of your deployed backend.
 
 ## Notes
 
