@@ -7,6 +7,44 @@ Universal transaction parser built as a full-stack monorepo. Users can sign up, 
 - Frontend: [https://parsify-frontend.vercel.app/](https://parsify-frontend.vercel.app/)
 - Backend: [https://parsify-backend.onrender.com](https://parsify-backend.onrender.com)
 
+## Features
+
+- Parse free-form transaction text into structured data
+- Auth with Better Auth (`/api/auth/*`)
+- Organization-based multi-tenancy
+- Protected transaction APIs with auth middleware
+- Cursor-style pagination on transaction listing
+
+## Tech Stack
+
+### Frontend (`frontend`)
+- Next.js 15 (App Router)
+- React 19 + TypeScript
+- Tailwind CSS 4
+- shadcn/ui + Radix UI
+- Better Auth client integration
+
+### Backend (`backend`)
+- Hono + TypeScript (Node runtime)
+- Better Auth (email/password + JWT + organizations)
+- Prisma ORM (`provider = "mongodb"`)
+- MongoDB
+- Jest + Supertest for tests
+
+### Monorepo
+- npm workspaces
+- `concurrently` for running frontend + backend together
+
+## 📸 Screenshots
+
+| Dashboard View | Transaction Parsing |
+|:---:|:---:|
+| ![Dashboard View](./assets/dashboard.png) | ![Transaction Parsing](./assets/parsing.png) |
+
+---
+
+*Built for Vessify Internship Assignment*
+
 ## Test User Credentials
 
 Use these demo accounts for quick login and testing:
@@ -71,44 +109,6 @@ curl https://parsify-backend.onrender.com/
 cd backend
 npm test
 ```
-
-## 📸 Screenshots
-
-| Dashboard View | Transaction Parsing |
-|:---:|:---:|
-| ![Dashboard View](./assets/dashboard.png) | ![Transaction Parsing](./assets/parsing.png) |
-
----
-
-*Built for Vessify Internship Assignment*
-
-## Tech Stack
-
-### Frontend (`frontend`)
-- Next.js 15 (App Router)
-- React 19 + TypeScript
-- Tailwind CSS 4
-- shadcn/ui + Radix UI
-- Better Auth client integration
-
-### Backend (`backend`)
-- Hono + TypeScript (Node runtime)
-- Better Auth (email/password + JWT + organizations)
-- Prisma ORM (`provider = "mongodb"`)
-- MongoDB
-- Jest + Supertest for tests
-
-### Monorepo
-- npm workspaces
-- `concurrently` for running frontend + backend together
-
-## Features
-
-- Parse free-form transaction text into structured data
-- Auth with Better Auth (`/api/auth/*`)
-- Organization-based multi-tenancy
-- Protected transaction APIs with auth middleware
-- Cursor-style pagination on transaction listing
 
 ## Development Setup
 
