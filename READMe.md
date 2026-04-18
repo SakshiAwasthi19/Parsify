@@ -144,7 +144,37 @@ For testing purposes, you can use the following credentials or register a new ac
 
 *Note: If testing on a live deployment, please register a new account as the database may be cleared periodically.*
 
+## 📋 Sample Test Data
+
+Copy and paste these examples into the application to test the parsing functionality:
+
+### 1. Bank Statement (Labeled)
+```text
+Date: 28 Feb 2026
+Description: STARBUCKS COFFEE MUMBAI
+Amount: -420.00
+Balance after transaction: 18,420.50
+```
+
+### 2. Mobile Notification (Compact)
+```text
+Paid ₹1,250.00 to Uber Ride on 10-12-2025. Avl Bal: ₹17,170.50
+```
+
+### 3. Credit Card / Retail
+```text
+Reliance Digital * Mumbai 
+15/01/2026 → ₹45,999.00 debited
+Available Limit → ₹54,000.00
+```
+
+### 4. Salary / Credit
+```text
+Date: 01-Mar-2026 Salary Credit Rs. 85,000.00 Bal 96,200.00
+```
+
 ## 🔐 Environment Variables
+
 
 
 ### Backend (`backend/.env`)
