@@ -1,21 +1,30 @@
-# Parsify
+# Parsify - Universal Transaction Parser
 
 Universal transaction parser built as a full-stack monorepo. Users can sign up, paste raw bank statement text, and store/retrieve parsed transactions with org-level isolation.
 
-## Live URLs
+## 🔗 Live URLs
 
 - Frontend: [https://parsify-frontend.vercel.app/](https://parsify-frontend.vercel.app/)
 - Backend: [https://parsify-backend.onrender.com](https://parsify-backend.onrender.com)
 
-## Features
+## ✨ Features
 
-- Parse free-form transaction text into structured data
-- Auth with Better Auth (`/api/auth/*`)
-- Organization-based multi-tenancy
-- Protected transaction APIs with auth middleware
-- Cursor-style pagination on transaction listing
+- ✅ Universal Parser : Parse free-form transaction text into structured data
+- ✅ Smart Pattern Support: 40+ built-in patterns for UPI, Credit Cards, ATM, Salary, and International transactions.
+- ✅ Secure Auth: Auth with Better Auth (`/api/auth/*`)
+- ✅ Smart Validation: Advanced amount validation and confidence scoring for high accuracy.
+- ✅ Organization Isolation: Organization-based multi-tenancy
+- ✅ Middlewares: Protected transaction APIs with auth middleware
+- ✅ Pagination: Cursor-style pagination on transaction listing
 
-## Tech Stack
+## 🧪 Test With:
+- UPI payments (PhonePe, GPay, PayTM)
+- Credit card statements
+- ATM withdrawals
+- Salary credits
+- International transactions
+
+## 🚀 Tech Stack
 
 ### Frontend (`frontend`)
 - Next.js 15 (App Router)
@@ -45,7 +54,7 @@ Universal transaction parser built as a full-stack monorepo. Users can sign up, 
 
 *Built for Vessify Internship Assignment*
 
-## Test User Credentials
+## 👥 Test User Credentials
 
 Use these demo accounts for quick login and testing:
 
@@ -78,7 +87,7 @@ Salary credit of Rs. 52,000 received on 01-Apr-2026. Available balance Rs. 73,42
 NEFT transfer to RENT123 on 05/04/2026 amount Rs.18000. Balance Rs. 24420
 ```
 
-## Testing Instructions
+## 🧪 Testing Instructions
 
 ### Manual app testing
 
@@ -173,7 +182,7 @@ npm run dev:frontend
 
 Open `http://localhost:3000`.
 
-## Environment Variables
+## 🔐 Environment Variables
 
 ### Backend (`backend/.env`)
 
@@ -189,7 +198,7 @@ Open `http://localhost:3000`.
 
 - `NEXT_PUBLIC_BACKEND_URL` (required): backend origin used by `frontend/src/lib/api.ts`
 
-## API Overview
+## 📡 API Overview
 
 ### Health / Utility
 - `GET /` -> backend status/version
@@ -244,7 +253,7 @@ Open `http://localhost:3000`.
 - `npm run lint`
 - `npm run type-check`
 
-## Project Structure
+## 📂 Project Structure
 
 ```text
 Parsify/
