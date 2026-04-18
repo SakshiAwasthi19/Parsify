@@ -72,15 +72,15 @@ cd backend
 npm test
 ```
 
-## Screenshots
+## 📸 Screenshots
 
-### Test Credentials UI
+| Dashboard View | Transaction Parsing |
+|:---:|:---:|
+| ![Dashboard View](./assets/dashboard.png) | ![Transaction Parsing](./assets/parsing.png) |
 
-![Test User Credentials](./assets/parsing.png)
+---
 
-### Dashboard and Transaction Parsing
-
-![Dashboard and Transaction Parsing](./assets/dashboard.png)
+*Built for Vessify Internship Assignment*
 
 ## Tech Stack
 
