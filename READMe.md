@@ -1,13 +1,13 @@
-# Parsify
+# Parsify - Universal Transaction Parser
 
 Universal transaction parser built as a full-stack monorepo. Users can sign up, paste raw bank statement text, and store/retrieve parsed transactions with org-level isolation.
 
-## Live URLs
+##🔗 Live URLs
 
 - Frontend: [https://vessify-frontend.vercel.app](https://vessify-frontend.vercel.app)
 - Backend: [https://vessify-backend-9o4i.onrender.com](https://vessify-backend-9o4i.onrender.com)
 
-## Tech Stack
+##🚀 Tech Stack
 
 ### Frontend (`frontend`)
 - Next.js 15 (App Router)
@@ -27,13 +27,22 @@ Universal transaction parser built as a full-stack monorepo. Users can sign up, 
 - npm workspaces
 - `concurrently` for running frontend + backend together
 
-## Features
+## ✨ Features
 
-- Parse free-form transaction text into structured data
-- Auth with Better Auth (`/api/auth/*`)
-- Organization-based multi-tenancy
-- Protected transaction APIs with auth middleware
-- Cursor-style pagination on transaction listing
+- ✅ Universal Parser : Parse free-form transaction text into structured data
+- ✅ Secure Auth : Auth with Better Auth (`/api/auth/*`)
+- ✅ Organization Isolation : Organization-based multi-tenancy
+- ✅ Middleware : Protected transaction APIs with auth middleware
+- ✅ Pagination : Cursor-style pagination on transaction listing
+- ✅ Smart Pattern Support: 40+ built-in patterns for UPI, Credit Cards, ATM, Salary, and International transactions.
+- ✅ Smart Validation: Advanced amount validation and confidence scoring for high accuracy.
+
+## 🧪 Test With:
+- UPI payments (PhonePe, GPay, PayTM)
+- Credit card statements
+- ATM withdrawals
+- Salary credits
+- International transactions
 
 ## Development Setup
 
@@ -98,7 +107,7 @@ npm run dev:frontend
 
 Open `http://localhost:3000`.
 
-## Environment Variables
+##🔐 Environment Variables
 
 ### Backend (`backend/.env`)
 
@@ -120,7 +129,7 @@ Open `http://localhost:3000`.
 - `GET /` -> backend status/version
 - `GET /health` -> health response
 
-### Auth (`/api/auth/*`)
+### 📡 Auth (`/api/auth/*`)
 
 - Better Auth core endpoints (for example):
   - `POST /api/auth/sign-up/email`
@@ -169,7 +178,7 @@ Open `http://localhost:3000`.
 - `npm run lint`
 - `npm run type-check`
 
-## Project Structure
+##📂 Project Structure
 
 ```text
 Parsify/
