@@ -44,13 +44,11 @@ Universal transaction parser built as a full-stack monorepo. Users can sign up, 
 - Salary credits
 - International transactions
 
-## Screenshots
+## 📸 Screenshots
 
-### Homepage / Dashboard
-![Homepage](assets/dashboard.png)
-
-### Parsing Feature
-![Parsing Feature](assets/parsing.png)
+| Dashboard View | Transaction Parsing |
+|:---:|:---:|
+| ![Dashboard View](assets/dashboard.png) | ![Transaction Parsing](assets/parsing.png) |
 
 
 ## Development Setup
@@ -174,8 +172,6 @@ Date: 01-Mar-2026 Salary Credit Rs. 85,000.00 Bal 96,200.00
 ```
 
 ## 🔐 Environment Variables
-
-
 
 ### Backend (`backend/.env`)
 
